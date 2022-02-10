@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "anggotas",
+  "info": {
+    "singularName": "anggota",
+    "pluralName": "anggotas",
+    "displayName": "Anggota",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nama": {
+      "type": "string"
+    },
+    "Nim": {
+      "type": "uid"
+    },
+    "peran": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::peran.peran",
+      "inversedBy": "anggotas"
+    }
+  }
+}
