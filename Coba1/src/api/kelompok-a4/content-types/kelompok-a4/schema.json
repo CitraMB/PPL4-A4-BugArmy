@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kelompok_a4s",
+  "info": {
+    "singularName": "kelompok-a4",
+    "pluralName": "kelompok-a4s",
+    "displayName": "KelompokA4"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nim": {
+      "type": "uid"
+    },
+    "Nama": {
+      "type": "string"
+    },
+    "Role": {
+      "type": "enumeration",
+      "enum": [
+        "BackEnd",
+        "FrontEnd"
+      ]
+    }
+  }
+}
