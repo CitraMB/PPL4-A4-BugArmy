@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "anggotas",
+  "info": {
+    "singularName": "anggota",
+    "pluralName": "anggotas",
+    "displayName": "Anggota"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nama": {
+      "type": "text"
+    },
+    "Nim": {
+      "type": "text"
+    },
+    "Status": {
+      "type": "string"
+    }
+  }
+}
