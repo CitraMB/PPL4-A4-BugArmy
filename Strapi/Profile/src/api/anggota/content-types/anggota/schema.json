@@ -13,16 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "Nama": {
-      "type": "string"
+      "type": "text"
     },
-    "Nim": {
+    "NIM": {
       "type": "uid"
     },
-    "peran": {
+    "Peran": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::peran.peran",
-      "inversedBy": "anggotas"
+      "inversedBy": "Anggota"
     }
   }
 }

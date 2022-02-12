@@ -4,7 +4,8 @@
   "info": {
     "singularName": "peran",
     "pluralName": "perans",
-    "displayName": "Peran"
+    "displayName": "Peran",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,11 +15,11 @@
     "Role": {
       "type": "string"
     },
-    "anggotas": {
+    "Anggota": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::anggota.anggota",
-      "mappedBy": "peran"
+      "mappedBy": "Peran"
     }
   }
 }
