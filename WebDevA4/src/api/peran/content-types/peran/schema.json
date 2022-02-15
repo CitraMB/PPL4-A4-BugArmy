@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "perans",
+  "info": {
+    "singularName": "peran",
+    "pluralName": "perans",
+    "displayName": "Peran"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NamaPeran": {
+      "type": "string"
+    }
+  }
+}
