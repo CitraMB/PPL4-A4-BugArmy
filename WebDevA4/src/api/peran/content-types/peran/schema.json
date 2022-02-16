@@ -4,15 +4,24 @@
   "info": {
     "singularName": "peran",
     "pluralName": "perans",
-    "displayName": "Peran"
+    "displayName": "Peran",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "NamaPeran": {
-      "type": "string"
+    "namaPeran": {
+      "type": "string",
+      "required": true,
+      "maxLength": 10
+    },
+    "mhsPeran": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mahasiswa.mahasiswa",
+      "mappedBy": "peranMhs"
     }
   }
 }
