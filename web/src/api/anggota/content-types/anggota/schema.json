@@ -4,7 +4,8 @@
   "info": {
     "singularName": "anggota",
     "pluralName": "anggotas",
-    "displayName": "Anggota"
+    "displayName": "Anggota",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,8 +18,11 @@
     "Nim": {
       "type": "text"
     },
-    "Status": {
-      "type": "string"
+    "peran": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::peran.peran",
+      "inversedBy": "anggotas"
     }
   }
 }
