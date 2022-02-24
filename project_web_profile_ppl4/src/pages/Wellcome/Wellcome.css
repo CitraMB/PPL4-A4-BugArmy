@@ -1,0 +1,36 @@
+.all-container{
+    width: 1200px;
+    margin-left: 69px;
+    height: 400px;
+    
+}
+
+.header-title{
+    font-size: 100px;
+    font-family: 'lucida sans';
+    text-align: center;
+    padding-top: 125px;
+    height: 400px;
+    color: beige;
+}
+
+.header{
+    background-color:midnightblue;
+}
+
+.left-body{
+    width: 400px ;
+    height: 200px;
+    background-color: blueviolet;
+    position: absolute;
+}
+
+.right-body{
+    background-color: cyan;
+    position:relative;
+    left: 400px;
+    width: 800px;
+}
+
+
+

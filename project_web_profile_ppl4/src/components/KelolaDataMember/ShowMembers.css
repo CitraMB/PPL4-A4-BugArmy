@@ -1,0 +1,24 @@
+.each-member{
+    width: 400px;
+    height: 200px;
+    background-color: antiquewhite;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    
+}
+
+.member-components{
+    padding-left: 60px;
+    padding-top: 60px;
+    
+}
+
+.btn-remove{
+    margin-left: 60px;
+    margin-top: 5px;
+    border-radius: 20px;
+}
+
+.btn-remove:hover{
+    background-color: cornflowerblue;
+}

@@ -1,0 +1,11 @@
+.each-member{
+    width: 400px;
+    height: 200px;
+    background-color: antiquewhite;
+    margin-bottom: 10px;
+}
+
+.member-components{
+    padding-left: 60px;
+    padding-top: 60px;
+}

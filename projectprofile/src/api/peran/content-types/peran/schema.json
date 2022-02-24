@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "perans",
+  "info": {
+    "singularName": "peran",
+    "pluralName": "perans",
+    "displayName": "Peran",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "namaperan": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::member.member",
+      "mappedBy": "peran"
+    }
+  }
+}

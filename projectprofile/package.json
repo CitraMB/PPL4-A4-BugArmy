@@ -1,5 +1,5 @@
 {
-  "name": "profile-project",
+  "name": "projectprofile",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -20,7 +20,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "5a3bd339-6c99-4c91-b172-9f525fdb5b24"
+    "uuid": "deb0fcad-d6e3-4789-a885-6f0191f0954b"
   },
   "engines": {
     "node": ">=12.x.x <=16.x.x",
