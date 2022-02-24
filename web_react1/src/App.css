@@ -1,0 +1,9 @@
+.Title {
+    text-align: center;
+    font-weight: bold;
+}
+.Card {
+    align-items: center;
+    width: 200px;
+    height: 100px;
+}
