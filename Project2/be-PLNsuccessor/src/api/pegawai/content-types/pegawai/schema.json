@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pegawais",
+  "info": {
+    "singularName": "pegawai",
+    "pluralName": "pegawais",
+    "displayName": "Pegawai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NIP": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 9
+    },
+    "Nama": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "EMAIL": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "TEMPAT_LAHIR": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "TANGGAL_LAHIR": {
+      "required": true,
+      "type": "date"
+    },
+    "NO_HP": {
+      "type": "string",
+      "maxLength": 13
+    },
+    "ID_GENDER": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::gender.gender",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_RELIGION": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::religion.religion",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_GRADE": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_JABATAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_PENDIDIKAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pendidikan.pendidikan",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_JENJANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenjang.jenjang",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_UNIT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "ID_PEGAWAI"
+    }
+  }
+}
