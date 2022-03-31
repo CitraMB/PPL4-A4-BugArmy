@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Package yang digunakan : 
+1. npm install framer-motion
+2. npm install react-icons --save
+3. npm i react-router-dom
+
 ### `npm start`
 
 Runs the app in the development mode.\
