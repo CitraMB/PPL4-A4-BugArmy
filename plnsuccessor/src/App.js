@@ -19,6 +19,7 @@ import PendaftaranFitProper from './pages/PendaftaranFitProper';
 import PendaftaranWawancara from './pages/PendaftaranWawancara';
 import PenilaianWawancara from './pages/PenilaianWawancara';
 import PenilaianFitProper from './pages/PenilaianFitProper';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/report" element={<Report />} />
             <Route path="/administrasiusers" element={<AdministrasiUsers />} />
             <Route path="/pencarianfitproper" element={<PencarianFitProper />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/master/datapeserta" element={<DataPeserta />} />
             <Route path="/master/datapenguji" element={<DataPenguji />} />
             <Route path="/report/rekapnilaiwawancara" element={<RekapNilaiWawancara />} />
