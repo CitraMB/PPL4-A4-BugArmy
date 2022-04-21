@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -18,6 +19,7 @@ import PendaftaranFitProper from './pages/PendaftaranFitProper';
 import PendaftaranWawancara from './pages/PendaftaranWawancara';
 import PenilaianWawancara from './pages/PenilaianWawancara';
 import PenilaianFitProper from './pages/PenilaianFitProper';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
             <Route path="/report" element={<Report />} />
             <Route path="/administrasiusers" element={<AdministrasiUsers />} />
             <Route path="/pencarianfitproper" element={<PencarianFitProper />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/master/datapeserta" element={<DataPeserta />} />
             <Route path="/master/datapenguji" element={<DataPenguji />} />
             <Route path="/report/rekapnilaiwawancara" element={<RekapNilaiWawancara />} />
@@ -46,6 +49,7 @@ function App() {
           </Routes>
         </Sidebar>
       </Router>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
     </>
   );
 }

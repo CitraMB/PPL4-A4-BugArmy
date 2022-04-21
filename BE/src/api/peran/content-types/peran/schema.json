@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "perans",
+  "info": {
+    "singularName": "peran",
+    "pluralName": "perans",
+    "displayName": "peran",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "anggotas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::anggota.anggota",
+      "mappedBy": "peran"
+    }
+  }
+}

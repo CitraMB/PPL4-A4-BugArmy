@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mahasiswas",
+  "info": {
+    "singularName": "mahasiswa",
+    "pluralName": "mahasiswas",
+    "displayName": "Mahasiswa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama": {
+      "type": "string",
+      "required": true
+    },
+    "nim": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "team_role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team-role.team-role",
+      "inversedBy": "mahasiswas"
+    }
+  }
+}
