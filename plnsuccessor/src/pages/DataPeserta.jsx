@@ -1,6 +1,7 @@
-import { AppBar, Avatar, Badge, Breadcrumbs, Grid, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Badge, Breadcrumbs, Container, Grid, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import AddLogo from "../assets/icons/AddLogo";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 
@@ -64,7 +65,7 @@ const DataPeserta = () => {
     return (
         <div id='pageDataPenguji' className='container'>
             {/*TODO: buat bar pencarian disini*/}
-
+          
             <AppBar position="static">
               <Toolbar variant="dense" style={{margin: 5}}>
                   <Grid container alignItems="center" spacing={2}>
@@ -92,12 +93,13 @@ const DataPeserta = () => {
               </Toolbar>
             </AppBar>
 
+          <Container style={{paddingTop: 20}}>
             <Breadcrumbs>
               <Typography>Master</Typography>
               <Typography fontWeight="bold">Data Peserta</Typography>
             </Breadcrumbs>
 
-            <Typography variant="h5">Data Peserta</Typography>
+            <Typography fontSize={30} fontFamily="monospace">Data Peserta <AddLogo/></Typography>
 
             <div className="container">
             <TableContainer >
@@ -124,7 +126,7 @@ const DataPeserta = () => {
             </div>
 
             <Pagination style={{alignProperty: 12}} count={10} variant="outlined" shape="rounded" />
-
+          </Container>
         </div>  
     )
 };
