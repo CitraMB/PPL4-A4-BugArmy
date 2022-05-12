@@ -1,0 +1,148 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pegawais",
+  "info": {
+    "singularName": "pegawai",
+    "pluralName": "pegawais",
+    "displayName": "Pegawai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NIP": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "maxLength": 10
+    },
+    "NAMA": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "EMAIL": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "TEMPAT_LAHIR": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "TANGGAL_LAHIR": {
+      "type": "date",
+      "required": true
+    },
+    "NO_HP": {
+      "type": "string",
+      "maxLength": 13
+    },
+    "FOTO": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ID_RIWAYAT_PESERTA": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_PESERTA"
+    },
+    "ID_RIWAYAT_PENGUJI": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_PENGUJI"
+    },
+    "JNS_KELAMIN": {
+      "type": "enumeration",
+      "enum": [
+        "Pria",
+        "Wanita"
+      ],
+      "required": true
+    },
+    "AGAMA": {
+      "type": "enumeration",
+      "enum": [
+        "Buddha",
+        "Hindu",
+        "Islam",
+        "Konghucu",
+        "Kristen Katolik",
+        "Kristen Protestan"
+      ],
+      "required": true
+    },
+    "STATUS_PEGAWAI": {
+      "type": "enumeration",
+      "enum": [
+        "-",
+        "Peserta",
+        "Penguji"
+      ],
+      "default": "-",
+      "required": true
+    },
+    "ID_ADMINISTRASI_USERS": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::administrasi-users.administrasi-users",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_SUB_BIDANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-bidang.sub-bidang",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_BIDANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bidang.bidang",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_DIREKTORAT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::direktorat.direktorat",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_DIVISI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::divisi.divisi",
+      "inversedBy": "id_pegawais"
+    },
+    "ID_GRADE": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_JABATAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_PENDIDIKAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pendidilkan.pendidilkan",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_UNIT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "ID_PEGAWAI"
+    }
+  }
+}

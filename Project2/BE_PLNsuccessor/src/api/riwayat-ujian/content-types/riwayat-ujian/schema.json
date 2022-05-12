@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "riwayat_ujians",
+  "info": {
+    "singularName": "riwayat-ujian",
+    "pluralName": "riwayat-ujians",
+    "displayName": "Riwayat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ID_FITPROPER": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fit-proper.fit-proper",
+      "mappedBy": "ID_RIWAYAT"
+    },
+    "ID_REPORT_NILAI": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::report-nilai.report-nilai",
+      "inversedBy": "ID_RIWAYAT"
+    },
+    "ID_REPORT_MANUAL": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::report-nilai-manual.report-nilai-manual",
+      "inversedBy": "ID_RIWAYAT"
+    },
+    "ID_WAWANCARA": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wawancara.wawancara",
+      "inversedBy": "ID_RIWAYAT"
+    },
+    "ID_PESERTA": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "ID_RIWAYAT_PESERTA"
+    },
+    "ID_PENGUJI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "ID_RIWAYAT_PENGUJI"
+    }
+  }
+}
