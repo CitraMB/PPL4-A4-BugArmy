@@ -115,9 +115,10 @@ a {
 }
 
 .AppBar {
-  height: 52px;
+  height: 51px;
   Justify-content: center;
   background-color: #fff !important;
+  box-shadow: 3px 2px 5px #48484834 !important;
 }
 
 .Grid-Header {
