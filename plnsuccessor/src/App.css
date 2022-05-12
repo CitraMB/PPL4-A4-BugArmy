@@ -155,3 +155,46 @@ a {
   font-size: 25px;
   margin-left: 25px;
 }
+
+.BoxSearch {
+  box-shadow: 0px 5px 5px #46464644;
+  margin: 10px 25px;
+  background-color: #fff;
+  height: 100px;
+  border-radius: 8px;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.TitleBoxSearch {
+  font-family: 'Segoe UI';
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.TitleBox {
+  display: flex;
+}
+
+.Inputbase {
+  background-color: #fff;
+  height: 30px;
+  width: 350px;
+  margin-top: 10px;
+  margin-left: 4px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.ButtonCekNIP {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 10px !important;
+  height: 30px;
+  bottom: 1px;
+  text-transform: none !important;
+}
