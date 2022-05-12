@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -49,7 +48,6 @@ function App() {
           </Routes>
         </Sidebar>
       </Router>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
     </>
   );
 }
