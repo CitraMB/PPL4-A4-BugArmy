@@ -133,7 +133,7 @@ const Sidebar = ({ children }) => {
     return (
         <div className="main-container">
             <motion.div animate={{
-                width: isOpen ? "220px" : "54px",
+                width: isOpen ? "260px" : "54px",
                 transition: {
                     duration: 0.1,
                     type: "spring",
@@ -180,7 +180,7 @@ const Sidebar = ({ children }) => {
                     })}
                 </section>
             </motion.div>
-            <main>{children}</main>
+            <main className="main">{children}</main>
         </div >
     );
 };
