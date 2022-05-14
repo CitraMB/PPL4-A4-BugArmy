@@ -2,6 +2,7 @@ import HeaderTanpaPencarian from "../components/Header/HeaderTanpaPencarian";
 import CekNIPLogo from "../assets/icons/CekNIPLogo";
 import DoneCekLogo from "../assets/icons/DoneCekLogo";
 import { InputBase, Button } from "@mui/material";
+import Footer from "../components/Footer/Footer";
 
 const PencarianFitProper = () => {
     return (
@@ -22,6 +23,7 @@ const PencarianFitProper = () => {
                     Submit
                 </Button>
             </div>
+            <Footer />
         </div>
     );
 };

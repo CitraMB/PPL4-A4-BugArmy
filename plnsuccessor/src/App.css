@@ -121,9 +121,10 @@ a {
   box-shadow: 3px 2px 5px #48484834 !important;
 }
 
-.Grid-Header {
+.Bar {
   position: relative;
   justify-content: flex-end;
+  min-height: 0px !important;
 }
 
 .profile {
@@ -198,4 +199,23 @@ a {
   height: 30px;
   bottom: 1px;
   text-transform: none !important;
+}
+
+.Footer {
+  height: 51px;
+  background-color: #fff !important;
+  box-shadow: 3px -2px 5px #48484834 !important;
+  justify-content: center;
+}
+
+.CopyrightPLN {
+  font-size: 15px;
+  color: #818EA3;
+  font-family: 'Segoe UI';
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.PencarianFitProper {
+  min-height: 1120px !important;
 }
