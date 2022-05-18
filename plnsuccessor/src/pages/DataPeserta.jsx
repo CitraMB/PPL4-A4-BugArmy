@@ -1,9 +1,8 @@
-import { AppBar, Avatar, Badge, Breadcrumbs, Container, Grid, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Breadcrumbs, Container, Grid, IconButton, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
+import React from 'react';
 import SearchIcon from "@mui/icons-material/Search";
 import AddLogo from "../assets/icons/AddLogo";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { alignProperty } from "@mui/material/styles/cssUtils";
 
 const columnTitle = ["NO","NAMA","NIP","JABATAN","GRADE","JENJANG","EDIT"];
 const dataPerson = [
@@ -99,7 +98,14 @@ const DataPeserta = () => {
               <Typography fontWeight="bold">Data Peserta</Typography>
             </Breadcrumbs>
 
-            <Typography fontSize={30} fontFamily="monospace">Data Peserta <AddLogo/></Typography>
+            <Grid container>
+              <Grid item>
+                <Typography fontSize={30} fontFamily="monospace"> Data Peserta </Typography>
+              </Grid>
+              <Grid item>
+                <IconButton><AddLogo/></IconButton>
+              </Grid>
+            </Grid>
 
             <div className="container">
             <TableContainer >
@@ -125,7 +131,8 @@ const DataPeserta = () => {
             </TableContainer>
             </div>
 
-            <Pagination style={{alignProperty: 12}} count={10} variant="outlined" shape="rounded" />
+            <br/>
+            <Pagination style={{display: "flex", justifyContent: "center"}} count={10} variant="outlined" shape="rounded" />
           </Container>
         </div>  
     )
