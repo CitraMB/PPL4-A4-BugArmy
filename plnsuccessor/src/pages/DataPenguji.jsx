@@ -1,6 +1,6 @@
-import { AppBar, Avatar, Breadcrumbs, Button, Container, Dialog, DialogActions, DialogContent, Grid, IconButton, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Breadcrumbs, Button, Container, Dialog, DialogActions, DialogContent, Grid, IconButton, Input, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import SearchIcon from "@mui/icons-material/Search";
 import AddLogo from "../assets/icons/AddLogo";
 
@@ -60,16 +60,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-// const modalDialog = () => {
-//   return (
-    
-//   )
-// }
+const ModalDialog = ({ open, onClose }) => {
+  
+  return (
+    <div>
+      <Dialog open={open}>
+        <DialogContent>
+          <Typography>Insert Data Penguji Baru</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => onClose()}>Cancel</Button>
+          <Button onClick={() => onClose()}>Save</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  )
+}
 
 const DataPenguji = () => {
-    const [btnInsert, setBtnInsert] = useState(false);
-    const closeModal = setBtnInsert(false);
-    const openModal = setBtnInsert(true);
+  const [modalOpen, setModalOpen] = useState(true);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalgClose = useCallback(() => setModalOpen(false), []);
 
     return (
         <div id='pageDataPenguji' className='container'>
@@ -113,7 +124,10 @@ const DataPenguji = () => {
                 <Typography fontSize={30} fontFamily="monospace"> Data Penguji </Typography>
               </Grid>
               <Grid item>
-                <IconButton onClick={openModal}><AddLogo/></IconButton>
+                <IconButton onClick={() => {
+                  handleModalOpen();
+                  ModalDialog(modalOpen,handleModalgClose);
+                }}><AddLogo/></IconButton>
               </Grid>
             </Grid>
 
@@ -144,17 +158,17 @@ const DataPenguji = () => {
             <br/>
             <Pagination style={{display: "flex", justifyContent: "center"}} count={10} variant="outlined" shape="rounded" />
 
-            <div>
-              <Dialog open={btnInsert}>
-                <DialogContent>
-                  <Typography>Insert Data Penguji Baru</Typography>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={closeModal}>Cancel</Button>
-                  <Button onClick={closeModal}>Save</Button>
-                </DialogActions>
-              </Dialog>
-            </div>
+            <br/>
+            <TableContainer>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
           </Container>
         </div>  
     )
