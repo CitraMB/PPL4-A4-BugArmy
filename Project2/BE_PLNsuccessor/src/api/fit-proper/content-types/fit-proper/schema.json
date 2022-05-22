@@ -56,6 +56,12 @@
       "relation": "oneToOne",
       "target": "api::riwayat-ujian.riwayat-ujian",
       "inversedBy": "ID_FITPROPER"
+    },
+    "ID_WAWANCARA": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wawancara.wawancara",
+      "inversedBy": "ID_FITPROPER"
     }
   }
 }
