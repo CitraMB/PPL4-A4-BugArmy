@@ -8,9 +8,9 @@ const PencarianFitProper = () => {
     return (
         <div className="PencarianFitProper">
             <HeaderTanpaPencarian />
-            <div className="TitlePencarianFitProper">
-                <p className="TitleUtamaPencarianFitProper">Pencarian Fit Proper</p>
-                <p className="TitleSecondPencarianFitProper">Welcome To Pencarian Fit & Proper</p>
+            <div className="Title">
+                <p className="TitleUtama">Pencarian Fit Proper</p>
+                <p className="TitleSecond">Welcome To Pencarian Fit & Proper</p>
             </div>
             <div className="BoxSearch">
                 <div className="TitleBox">
@@ -20,7 +20,7 @@ const PencarianFitProper = () => {
                 <InputBase className="Inputbase" />
                 <Button className="ButtonCekNIP" variant="outlined">
                     <DoneCekLogo />
-                    Submit
+                    <p>Submit</p>
                 </Button>
             </div>
             <Footer />

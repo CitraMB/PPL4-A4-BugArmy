@@ -141,7 +141,7 @@ a {
   width: 35px !important;
 }
 
-.TitleUtamaPencarianFitProper {
+.TitleUtama {
   font-family: 'Segoe UI';
   font-weight: 300;
   font-size: 12px;
@@ -150,7 +150,7 @@ a {
   color: #818EA3;
 }
 
-.TitleSecondPencarianFitProper {
+.TitleSecond {
   color: #3D5170;
   font-family: 'Segoe UI';
   font-weight: 300;
@@ -201,6 +201,10 @@ a {
   text-transform: none !important;
 }
 
+.ButtonCekNIP p {
+  padding-left: 5px;
+}
+
 .Footer {
   height: 51px;
   background-color: #fff !important;
@@ -214,4 +218,28 @@ a {
   font-family: 'Segoe UI';
   font-weight: 700;
   font-size: 13px;
+}
+
+.TitleUtama span {
+  font-weight: bold;
+}
+
+.ButtonPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 27px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 10px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+}
+
+.ButtonPendaftaranFitProper p {
+  margin-right: 5px;
+}
+
+.tabelPendaftaranFitProper {
+  margin: 20px 30px;
 }

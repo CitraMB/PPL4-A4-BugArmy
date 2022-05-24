@@ -7,7 +7,7 @@ function Icon() {
             width="20"
             height="20"
             fill="none"
-            viewBox="8 0 48 48"
+            viewBox="0 0 48 48"
         >
             <circle cx="24" cy="24" r="16" fill="#007BFF"></circle>
             <path
