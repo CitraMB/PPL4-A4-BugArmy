@@ -12,7 +12,7 @@ const PendaftaranFitProper = () => {
                 <p className="TitleUtama">Pencarian Fit Proper / <span>Pendaftaran Peserta Fit & Proper</span></p>
                 <p className="TitleSecond">Welcome To Pendaftaran Peserta  Fit  & Proper</p>
             </div>
-            <Button className="ButtonPendaftaranFitProper" variant="outlined">
+            <Button href="/fitproper/pendaftaranfitproper/formfitproper" className="ButtonPendaftaranFitProper" variant="outlined">
                 <p>Pendaftaran</p>
                 <PendaftaranLogo />
             </Button>

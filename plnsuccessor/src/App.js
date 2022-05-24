@@ -19,6 +19,7 @@ import PendaftaranWawancara from './pages/PendaftaranWawancara';
 import PenilaianWawancara from './pages/PenilaianWawancara';
 import PenilaianFitProper from './pages/PenilaianFitProper';
 import Login from './pages/Login/Login';
+import FormPendaftaranFitProper from './pages/FormPendaftaranFitProper';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/fitproper/pendaftaranwawancara" element={<PendaftaranWawancara />} />
             <Route path="/fitproper/penilaianwawancara" element={<PenilaianWawancara />} />
             <Route path="/fitproper/penilaianfitproper" element={<PenilaianFitProper />} />
+            <Route path="/fitproper/pendaftaranfitproper/formfitproper" element={<FormPendaftaranFitProper />} />
             <Route path="*" element={<>not found</>} />
           </Routes>
         </Sidebar>
