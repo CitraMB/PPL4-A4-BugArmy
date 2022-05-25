@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bidangs",
+  "info": {
+    "singularName": "bidang",
+    "pluralName": "bidangs",
+    "displayName": "Bidang",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "BIDANG": {
+      "type": "string",
+      "maxLength": 225,
+      "required": true
+    },
+    "ID_DIVISI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::divisi.divisi",
+      "inversedBy": "ID_BIDANG"
+    },
+    "ID_SUB_BIDANG": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-bidang.sub-bidang",
+      "mappedBy": "ID_BIDANG"
+    }
+  }
+}
