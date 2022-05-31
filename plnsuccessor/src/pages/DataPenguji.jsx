@@ -1,8 +1,9 @@
-import { AppBar, Avatar, Breadcrumbs, Button, Container, Dialog, DialogActions, DialogContent, Grid, IconButton, Input, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Breadcrumbs, Button, Container, Dialog, DialogActions, DialogContent, Grid, IconButton, Input, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Toolbar, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import SearchIcon from "@mui/icons-material/Search";
-import AddLogo from "../assets/icons/AddLogo";
+import InsertDataPenguji from "./insert/InsertDataPenguji";
+import axios from "axios";
 
 const columnTitle = ["NO","NAMA","NIP","JABATAN","GRADE","JENJANG","EDIT"];
 const dataPerson = [
@@ -46,41 +47,18 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
-
-const ModalDialog = ({ open, onClose }) => {
-  
-  return (
-    <div>
-      <Dialog open={open}>
-        <DialogContent>
-          <Typography>Insert Data Penguji Baru</Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => onClose()}>Cancel</Button>
-          <Button onClick={() => onClose()}>Save</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  )
-}
-
 const DataPenguji = () => {
-  const [modalOpen, setModalOpen] = useState(true);
-  const handleModalOpen = () => setModalOpen(true);
-  const handleModalgClose = useCallback(() => setModalOpen(false), []);
+    const [data, setData] = useState([]);
+    const [key, setKey] = useState("");
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      if(data.length === 0){
+        axios.get(`http://localhost:1337/api/pegawais?filters[status_pegawai][$eq]=Penguji&sort[0]=NIP`).then(res => {        
+          setData(res.data.data);
+        })
+      }
+    });
 
     return (
         <div id='pageDataPenguji' className='container'>
@@ -94,10 +72,14 @@ const DataPenguji = () => {
                         <SearchIconWrapper>
                           <SearchIcon />
                         </SearchIconWrapper>
-                        <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                        />          
+                        <TextField 
+                          fullWidth
+                          variant="standard"
+                          style={{ paddingLeft: 80, height: 40, alignContent: 'center'}}
+                          InputProps={{
+                            disableUnderline: true,
+                          }}
+                        />
                       </Search>
                     </Grid>
                     <Grid item xs={0.5}>
@@ -120,14 +102,11 @@ const DataPenguji = () => {
             </Breadcrumbs>
 
             <Grid container>
-              <Grid item>
-                <Typography fontSize={30} fontFamily="monospace"> Data Penguji </Typography>
+              <Grid item xs={0}>
+                <Typography fontSize={30} fontFamily="sans-serif"> Data Penguji </Typography>
               </Grid>
               <Grid item>
-                <IconButton onClick={() => {
-                  handleModalOpen();
-                  ModalDialog(modalOpen,handleModalgClose);
-                }}><AddLogo/></IconButton>
+                <InsertDataPenguji />
               </Grid>
             </Grid>
 
@@ -142,21 +121,25 @@ const DataPenguji = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                      {dataPerson.map((col) =>
-                        <TableRow>
-                          {col.data.map((data) =>
-                            <TableCell>{data}</TableCell>
-                          )}
-                        </TableRow>
-                      )}
-                  
+                      {data.map((val, index) => {
+                        return (
+                          <TableRow>
+                            <TableCell  key={index}>{index + 1}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NIP}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>
+                              <Button variant="contained">Edit</Button>
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
                 </TableBody>
               </Table>
             </TableContainer>
             </div>
-
-            <br/>
-            <Pagination style={{display: "flex", justifyContent: "center"}} count={10} variant="outlined" shape="rounded" />
 
             <br/>
             <TableContainer>

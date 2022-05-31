@@ -1,8 +1,9 @@
 import { AppBar, Avatar, Breadcrumbs, Container, Grid, IconButton, InputBase, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchIcon from "@mui/icons-material/Search";
 import AddLogo from "../assets/icons/AddLogo";
+import axios from 'axios';
 
 const columnTitle = ["NO","NAMA","NIP","JABATAN","GRADE","JENJANG","EDIT"];
 const dataPerson = [
@@ -60,7 +61,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
+
+
+
 const DataPeserta = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      if(data.length === 0){
+        axios.get(`http://localhost:1337/api/pegawais?filters[status_pegawai][$eq]=Peserta&sort[0]=NIP`).then(res => {        
+          setData(res.data.data);
+        })
+      }
+    },[]);
+
     return (
         <div id='pageDataPenguji' className='container'>
             {/*TODO: buat bar pencarian disini*/}
@@ -100,7 +116,7 @@ const DataPeserta = () => {
 
             <Grid container>
               <Grid item>
-                <Typography fontSize={30} fontFamily="monospace"> Data Peserta </Typography>
+                <Typography fontSize={30} fontFamily="sans-serif"> Data Peserta </Typography>
               </Grid>
               <Grid item>
                 <IconButton><AddLogo/></IconButton>
@@ -118,21 +134,26 @@ const DataPeserta = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                      {dataPerson.map((col) =>
-                        <TableRow>
-                          {col.data.map((data) =>
-                            <TableCell>{data}</TableCell>
-                          )}
-                        </TableRow>
-                      )}
-                  
+                      {data.map((val, index) => {
+                        console.log(val.attributes);
+                        return (
+                          <TableRow>
+                            <TableCell>{index + 1}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NIP}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.NAMA}</TableCell>
+                          </TableRow>
+                        )
+                      })}
                 </TableBody>
               </Table>
             </TableContainer>
             </div>
 
             <br/>
-            <Pagination style={{display: "flex", justifyContent: "center"}} count={10} variant="outlined" shape="rounded" />
+            {/* <Pagination style={{display: "flex", justifyContent: "center"}} count={10} variant="outlined" shape="rounded" /> */}
           </Container>
         </div>  
     )
