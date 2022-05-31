@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "report_nilai_manuals",
+  "info": {
+    "singularName": "report-nilai-manual",
+    "pluralName": "report-nilai-manuals",
+    "displayName": "Report_Nilai_Manual",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NILAI_PENGETAHUAN_60": {
+      "type": "integer",
+      "required": true
+    },
+    "NILAI_PENGETAHUAN_40": {
+      "type": "integer"
+    },
+    "NILAI_KETERAMPILAN_60": {
+      "type": "integer",
+      "required": true
+    },
+    "NILAI_KETERAMPILAN_40": {
+      "type": "integer"
+    },
+    "REKOMENDASI_PENGUJI": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "KELEMAHAN": {
+      "type": "string",
+      "maxLength": 225
+    },
+    "KEKUATAN": {
+      "type": "string",
+      "maxLength": 225
+    },
+    "ID_RIWAYAT": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_REPORT_MANUAL"
+    }
+  }
+}

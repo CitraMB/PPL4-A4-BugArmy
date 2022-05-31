@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "administrasi_userss",
+  "info": {
+    "singularName": "administrasi-users",
+    "pluralName": "administrasi-userss",
+    "displayName": "Administrasi_Users",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NAMA_ADMIN": {
+      "type": "string",
+      "maxLength": 50,
+      "required": false
+    },
+    "PASSWORD": {
+      "type": "string",
+      "maxLength": 8,
+      "required": true
+    },
+    "AKSES": {
+      "type": "integer",
+      "required": true,
+      "max": 3,
+      "min": 1
+    },
+    "ADMINISTRASI_USERS": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "MASTER": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "DAFTAR_FP": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "NILAI_FP": {
+      "type": "boolean",
+      "required": true
+    },
+    "REPORT": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "ID_PEGAWAI": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "ID_ADMINISTRASI_USERS"
+    }
+  }
+}
