@@ -16,11 +16,11 @@
       "type": "date",
       "required": true
     },
-    "ID_RIWAYAT": {
+    "ID_FITPROPER": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::riwayat-ujian.riwayat-ujian",
-      "mappedBy": "ID_WAWANCARA"
+      "target": "api::fit-proper.fit-proper",
+      "inversedBy": "ID_WAWANCARA"
     }
   }
 }

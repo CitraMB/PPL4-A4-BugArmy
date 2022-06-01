@@ -30,12 +30,6 @@
       "target": "api::report-nilai-manual.report-nilai-manual",
       "inversedBy": "ID_RIWAYAT"
     },
-    "ID_WAWANCARA": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::wawancara.wawancara",
-      "inversedBy": "ID_RIWAYAT"
-    },
     "ID_PESERTA": {
       "type": "relation",
       "relation": "manyToOne",

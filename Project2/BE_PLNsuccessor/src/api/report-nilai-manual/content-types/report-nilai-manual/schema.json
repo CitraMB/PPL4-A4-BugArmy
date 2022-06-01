@@ -43,6 +43,11 @@
       "relation": "oneToOne",
       "target": "api::riwayat-ujian.riwayat-ujian",
       "mappedBy": "ID_REPORT_MANUAL"
+    },
+    "PENILAI": {
+      "type": "string",
+      "maxLength": 50,
+      "required": true
     }
   }
 }
