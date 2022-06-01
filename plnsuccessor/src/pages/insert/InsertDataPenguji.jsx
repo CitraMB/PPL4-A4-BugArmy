@@ -137,7 +137,6 @@ const InsertDataPenguji = () => {
                   id="outlined-basic"
                   labelId="label-jenjang"
                   value={check}
-                  onChange={}
                   fullWidth
                   size="small">
                     <MenuItem>1</MenuItem>
