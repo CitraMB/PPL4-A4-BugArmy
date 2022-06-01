@@ -35,6 +35,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/master/datapeserta" element={<DataPeserta />} />
             <Route path="/master/datapenguji" element={<DataPenguji />} />
+            <Route path="/master/datapeserta/insert" element={<DataPeserta />} />
+            <Route path="/master/datapenguji/insert" element={<DataPenguji />} />
             <Route path="/report/rekapnilaiwawancara" element={<RekapNilaiWawancara />} />
             <Route path="/report/rekapnilaifitproper" element={<RekapNilaiFitProper />} />
             <Route path="/report/rekapmanualnilaifitproper" element={<RekapManualNilaiFitProper />} />
