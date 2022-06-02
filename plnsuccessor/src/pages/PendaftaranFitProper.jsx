@@ -2,7 +2,7 @@ import HeaderTanpaPencarian from "../components/Header/HeaderTanpaPencarian";
 import Footer from "../components/Footer/Footer";
 import { Button } from "@mui/material";
 import PendaftaranLogo from "../assets/icons/PendaftaranLogo";
-import StickyTable from "../components/Table/StrickyTable";
+import TableFitProper from "../components/Table/TableFitProper";
 
 const PendaftaranFitProper = () => {
     return (
@@ -16,8 +16,11 @@ const PendaftaranFitProper = () => {
                 <p>Pendaftaran</p>
                 <PendaftaranLogo />
             </Button>
+            <Button href="#" className="ButtonEditPendaftaranFitProper" variant="outlined">
+                <p>Edit List</p>
+            </Button>
             <div className="tabelPendaftaranFitProper">
-                <StickyTable />
+                <TableFitProper />
             </div>
             <Footer />
         </div>

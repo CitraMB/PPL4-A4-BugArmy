@@ -8,14 +8,7 @@ import SelectedFormGrade from "../components/Form/SelectedFormGrade"
 import SelectedFormJenisFitProper from "../components/Form/SelectedFormJenisFitProper"
 import SubmitLogo from "../assets/icons/SubmitLogo";
 
-const FormPendaftaranFitProper = () => {
-
-    const gradeValue = () => {
-    }
-
-    const JenisFitProperValue = () => {
-    }
-
+const EditPendaftaranFitProper = () => {
     return (
         <div className="FormPendaftaranFitProper">
             <HeaderTanpaPencarian />
@@ -25,7 +18,7 @@ const FormPendaftaranFitProper = () => {
             </Button>
             <div className="TitleFormFitProper">
                 <GearLogo />
-                <p>Pendaftaran / Uploating  Peserta  Fit Proper</p>
+                <p>Mengubah / Update  Peserta  Fit Proper</p>
             </div>
             <div className="BoxFormFitProper">
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -39,11 +32,10 @@ const FormPendaftaranFitProper = () => {
                             size="small"
                             label="NIP"
                             className="baseNIP"
+                            InputProps={{
+                                readOnly: true,
+                            }}
                         />
-                        <Button className="ButtonCekFormNIP" variant="outlined">
-                            <DoneCekLogo />
-                            <p>Cek</p>
-                        </Button>
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Nama Lengkap</p>
@@ -79,7 +71,7 @@ const FormPendaftaranFitProper = () => {
                         <p className="formTitle">Grade</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <SelectedFormGrade gradeValue={gradeValue} />
+                        <SelectedFormGrade />
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Date</p>
@@ -127,7 +119,7 @@ const FormPendaftaranFitProper = () => {
                         <p className="formTitle">Jenis Fit & Proper</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <SelectedFormJenisFitProper JenisFitProperValue={JenisFitProperValue} />
+                        <SelectedFormJenisFitProper />
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Pilih Urjab</p>
@@ -296,4 +288,4 @@ const FormPendaftaranFitProper = () => {
     )
 };
 
-export default FormPendaftaranFitProper;
+export default EditPendaftaranFitProper;

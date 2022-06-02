@@ -305,13 +305,23 @@ a {
 .baseNamaLengkap,
 .baseJabatan,
 .baseProyeksi,
-.baseJenjangJabatan {
+.baseJenjangJabatan,
+.basePilihUrjab,
+.baseUploadPPT,
+.baseUploadCV,
+.basePenguji {
   width: 140% !important;
 }
 
 .formTitle {
   color: #3D5170;
   font-size: 20px;
+  font-family: 'WeblySleek UI', sans-serif;
+}
+
+.formTitle span {
+  color: #3D5170;
+  font-size: 12px;
   font-family: 'WeblySleek UI', sans-serif;
 }
 
@@ -336,4 +346,45 @@ a {
 
 .formTextField {
   margin-left: 15rem;
+}
+
+.cellEdit {
+  padding: 0px !important;
+  padding-right: 16px !important;
+}
+
+.cellDelete {
+  padding: 0px !important;
+  padding-left: 16px !important;
+}
+
+.ButtonSubmitPendaftaranFitProper {
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  margin-left: 340px !important;
+  margin-top: 20px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  font-family: 'WeblySleek UI';
+  font-weight: 300;
+  background-color: #007BFF !important;
+  text-transform: none !important;
+}
+
+.ButtonSubmitPendaftaranFitProper p {
+  margin-left: 5px;
+}
+
+.ButtonEditPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 15px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+  display: none !important;
 }
