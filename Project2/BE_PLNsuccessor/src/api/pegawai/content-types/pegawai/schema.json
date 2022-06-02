@@ -83,11 +83,11 @@
     "STATUS_PEGAWAI": {
       "type": "enumeration",
       "enum": [
-        "-",
         "Peserta",
-        "Penguji"
+        "Penguji",
+        "Admin"
       ],
-      "default": "-",
+      "default": "Peserta",
       "required": true
     },
     "ID_ADMINISTRASI_USERS": {
