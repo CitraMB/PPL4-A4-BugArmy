@@ -16,19 +16,21 @@ const columnTitle = [
 const user = [
     {
         id: 3,
-        data: ["Alvin Andrian Rizki","201511003","Direktur Pemasaran","Integration 1","Fungsional 1","Edit", "Report Button"]
+        data: ["Full Akses","201511003","Alvin Andrian Rizki","Full Akses","1","Read","Daftar","Nilai FP","Report Button"]
     }
 ];
 
 const AdministrasiUsers = () => {
     return (
         <>
+        <br />
             <Container sx={{
-                backgroundColor: '#F2F2F2',
                 height: 600,
             }}>
                 <Typography>Pencarian Fit Proper</Typography>
                 <Typography variant="h4">Welcome To Administrasi Users</Typography>
+            <br />
+            <br />
 
                 <Box sx={{
                     margin: 2,

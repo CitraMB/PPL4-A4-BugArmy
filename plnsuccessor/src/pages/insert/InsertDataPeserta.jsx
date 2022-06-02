@@ -77,12 +77,10 @@ function KembaliLogo() {
   );
 }
 
-const InsertDataPenguji = () => {
+const InsertDataPeserta = () => {
   const [check, setChecked] = useState(true);
   const [startDate, setStartDate] = useState(new Date());
-  const [jabatan, setJabatan] = useState([]);
-  const [grade, setGrade] = useState([]);
-  const [jenjang, setJenjang] = useState([]); 
+  const [jabatan, setJabatan] = useState([]); 
   const [dataPenguji, setDataPenguji] = useState({
     NIP: "",
     NAMA: "",
@@ -102,12 +100,9 @@ const InsertDataPenguji = () => {
   })
 
   useEffect(() => {
-    customEndpoints("jabatans", setJabatan);
-    customEndpoints("grades", setGrade);
-    if(dataPenguji.JABATAN !== ""){
-      customEndpoints("jenjangs", setJenjang);
-    }
-  },[])
+    console.log(dataPenguji);
+    console.log(startDate);
+  },[dataPenguji])
 
   const getData = (val) => {
     axios.get("http://localhost:1337/api/pegawais?filters[NIP][$eq]=" + val).then((res) => {
@@ -119,12 +114,6 @@ const InsertDataPenguji = () => {
         swal("Gagal", "NIP sudah terdaftar.", "error");
         setChecked(true);
       }
-    })
-  }
-
-  const customEndpoints = (endpoints, setter) => {
-    axios.get("http://localhost:1337/api/" + endpoints).then((res) => {
-      setter(res.data.data);
     })
   }
 
@@ -146,7 +135,7 @@ const InsertDataPenguji = () => {
             <Icon><DataLogoInsert /></Icon>
             </Grid>
             <Grid item>
-            <Typography  sx={{paddingTop: 0.5}}>Input Data Penguji</Typography>
+            <Typography  sx={{paddingTop: 0.5}}>Input Data Peserta</Typography>
             </Grid>
           </Grid>
       </Box>
@@ -310,26 +299,17 @@ const InsertDataPenguji = () => {
             <Grid item md={1.5}>
             <Typography>Jabatan</Typography>
             </Grid>
-            
-            <Grid item  xs={2.5}>
-              <FormControl fullWidth >
-              <Select
-                displayEmpty
-                size="small"
-                value={dataPenguji.JABATAN}
-                placeholder="Pilih Jabatan"
-                onChange={(e) => {
-                  setDataPenguji({ ...dataPenguji, JABATAN: e.target.value}
-                )}}
-                disabled={check}
-              >
-                {jabatan.map((val, index) => {
-                  return (
-                    <MenuItem value={index}>{val.attributes.JABATAN}</MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
+            <Grid item>
+              <TextField
+                    id="jabatan"
+                    variant="outlined"
+                    size="small"
+                    placeholder="Masukan Jabatan"
+                    onChange={(e) => {
+                      setDataPenguji({ ...dataPenguji, jabatan: e.target.value}
+                    )}}
+                    disabled={check}
+                  />
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -353,26 +333,17 @@ const InsertDataPenguji = () => {
             <Grid item md={1.5}>
             <Typography>Grade</Typography>
             </Grid>
-            <Grid item  xs={2.5}>
-              <FormControl fullWidth >
-              <Select
-                displayEmpty
-                size="small"
-                value={dataPenguji.GRADE}
-                placeholder="Pilih Grade"
-                onChange={(e) => {
-                  setDataPenguji({ ...dataPenguji, GRADE: e.target.value}
-                )}}
-                disabled={check}
-              >
-                {grade.map((val, index) => {
-                  console.log("grade", val);
-                  return (
-                    <MenuItem value={index}>{val.attributes.GRADE}</MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
+            <Grid item>
+              <TextField
+                    id="grade"
+                    variant="outlined"
+                    size="small"
+                    placeholder="Masukan Grade"
+                    onChange={(e) => {
+                      setDataPenguji({ ...dataPenguji, grade: e.target.value}
+                    )}}
+                    disabled={check}
+                  />
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -543,4 +514,4 @@ const InsertDataPenguji = () => {
   );
 };
 
-export default InsertDataPenguji;
+export default InsertDataPeserta;

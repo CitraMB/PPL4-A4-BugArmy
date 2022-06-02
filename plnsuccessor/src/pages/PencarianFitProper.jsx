@@ -18,6 +18,7 @@ const user = [
 const PencarianFitProper = () => {
   return (
       <>
+      <br />
         <Container>
           <Typography>Pencarian Fit Proper</Typography>
           <Typography variant="h5">Welcome To Pencarian Fit & Proper</Typography>
@@ -43,9 +44,14 @@ const PencarianFitProper = () => {
               </Grid>
             </Grid>
           </Box>
-
-          <Box sx={{paddingTop: 5}}>
-            <TableContainer>
+          <br />
+          <br />
+          <br />
+            <TableContainer  sx={{
+                    margin: 2,
+                    borderRadius: 3,
+                    backgroundColor: '#fff',
+                }}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -55,11 +61,14 @@ const PencarianFitProper = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-
+                  <TableRow>
+                   {columnTitle.map((col) =>
+                      <TableCell>{col}</TableCell>
+                    )}
+                  </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
-          </Box>
 
         </Container>
       </>

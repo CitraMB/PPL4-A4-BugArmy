@@ -93,7 +93,8 @@ const DataPeserta = () => {
 
     useEffect(() => {
       if(data.length === 0){
-        axios.get(`http://localhost:1337/api/pegawais?filters[status_pegawai][$eq]=Peserta&sort[0]=NIP`).then(res => {        
+        axios.get(`http://localhost:1337/api/pegawais?filters[status_pegawai][$eq]=Peserta&sort[0]=NIP&populate=ID_GRADE&populate=ID_JABATAN.ID_JENJANG`).then(res => {       
+          console.log(res.data.data); 
           setData(res.data.data);
         })
       }
@@ -103,7 +104,7 @@ const DataPeserta = () => {
         <div id='pageDataPenguji' className='container'>
             {/*TODO: buat bar pencarian disini*/}
           
-            <AppBar position="static">
+            <AppBar position="static" sx={{backgroundColor: '#fff', color: '#000'}}>
               <Toolbar variant="dense" style={{margin: 5}}>
                   <Grid container alignItems="center" spacing={2}>
                     <Grid item xs={8.6}>
@@ -141,12 +142,14 @@ const DataPeserta = () => {
                 <Typography fontSize={30} fontWeight="light"> Data Peserta </Typography>
               </Grid>
               <Grid item>
-                <IconButton><AddLogo/></IconButton>
+                <IconButton  href="datapeserta/insert"><AddLogo/></IconButton>
               </Grid>
             </Grid>
+            <br />
+            <br />
 
             <div className="container">
-            <TableContainer >
+            <TableContainer sx={{backgroundColor: '#fff', color: '#000', borderRadius: 3}} >
               <Table stickyHeader>
                 <TableHead>
                   <TableRow>
@@ -163,9 +166,9 @@ const DataPeserta = () => {
                             <TableCell>{index + 1}</TableCell>
                             <TableCell>{val.attributes.NAMA}</TableCell>
                             <TableCell>{val.attributes.NIP}</TableCell>
-                            <TableCell>{val.attributes.id}</TableCell>
-                            <TableCell>{val.attributes.NAMA}</TableCell>
-                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.ID_JABATAN.data.attributes.JABATAN}</TableCell>
+                            <TableCell>{val.attributes.ID_GRADE.data.attributes.GRADE}</TableCell>
+                            <TableCell>{val.attributes.ID_JABATAN.data.attributes.ID_JENJANG.data.attributes.JENJANG}</TableCell>
                             <TableCell>
                             {/* Button Delete Peserta */}
                               <IconButton onClick={() => {deleteData(val.id, val.attributes.NAMA)}}>
