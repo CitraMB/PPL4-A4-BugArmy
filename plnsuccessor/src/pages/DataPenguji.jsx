@@ -24,7 +24,6 @@ const dataPerson = [
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  marginTop: 5,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -40,12 +39,26 @@ const Search = styled('div')(({ theme }) => ({
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '80%',
+  height: '100%',
   position: 'absolute',
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
 }));
 
 const DataPenguji = () => {
@@ -66,7 +79,7 @@ const DataPenguji = () => {
         <div id='pageDataPenguji' className='container' >
             {/*TODO: buat bar pencarian disini*/}
           
-            <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000'}}>
+            <AppBar position="static">
               <Toolbar variant="dense" style={{margin: 5}}>
                   <Grid container alignItems="center" spacing={2}>
                     <Grid item xs={8.6}>
@@ -74,15 +87,10 @@ const DataPenguji = () => {
                         <SearchIconWrapper>
                           <SearchIcon />
                         </SearchIconWrapper>
-                        <TextField 
-                          fullWidth
-                          variant="standard"
-                          placeholder="Search Penguji"
-                          style={{ paddingLeft: 80, height: 40, alignContent: 'center'}}
-                          InputProps={{
-                            disableUnderline: true,
-                          }}
-                        />
+                        <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ 'aria-label': 'search' }}
+                        />          
                       </Search>
                     </Grid>
                     <Grid item xs={0.5}>
@@ -93,6 +101,7 @@ const DataPenguji = () => {
                         Siera Brooks
                       </Typography>
                     </Grid>
+                    
                   </Grid>
               </Toolbar>
             </AppBar>
@@ -105,7 +114,7 @@ const DataPenguji = () => {
 
             <Grid container>
               <Grid item xs={0}>
-                <Typography fontSize={30} fontWeight="bold"> Data Penguji </Typography>
+                <Typography fontSize={30} fontWeight="light"> Data Penguji </Typography>
               </Grid>
               <Grid item>
                 <IconButton href="datapenguji/insert">
