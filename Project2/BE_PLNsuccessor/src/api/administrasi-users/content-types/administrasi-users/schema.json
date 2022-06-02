@@ -25,8 +25,8 @@
     "AKSES": {
       "type": "integer",
       "required": true,
-      "max": 3,
-      "min": 1
+      "max": 2,
+      "min": 0
     },
     "ADMINISTRASI_USERS": {
       "type": "boolean",
