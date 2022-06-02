@@ -116,7 +116,7 @@ const DataPeserta = () => {
 
             <Grid container>
               <Grid item>
-                <Typography fontSize={30} fontFamily="sans-serif"> Data Peserta </Typography>
+                <Typography fontSize={30} fontWeight="bold"> Data Peserta </Typography>
               </Grid>
               <Grid item>
                 <IconButton><AddLogo/></IconButton>

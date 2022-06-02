@@ -1,20 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Segoe UI';
-  src: local("Segoe UI"),url("./assets/fonts/Segoe-UI.ttf") format("truetype");
-  font-weight: normal;
-}
-
-a {
-  text-decoration: none !important;
-}
+/* https://www.cdnfonts.com/weblysleek-ui.font */
+@import url('http://fonts.cdnfonts.com/css/weblysleek-ui?styles=96168,96172,96169,96173,96170,96171');
 
 .sidebar {
   background: #fff;
@@ -29,16 +14,14 @@ a {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 1px 0px #97979744;
-  padding-right: 20px;
-  padding-left: 18px;
-  padding-top: 10px;
+  padding: 15px 20px;
 }
 
 .logo {
   font-size: 18px;
   line-height: 0;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 600;
   color: #3D5170;
   white-space: nowrap;
 }
@@ -59,7 +42,7 @@ a {
   border-left: 4px solid transparent;
   box-shadow: 0px 1px 0px #97979744;
   align-items: center;
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
 }
 
 .link:hover {
@@ -68,17 +51,15 @@ a {
 }
 
 .link_text {
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
   color: #3D5170;
   font-size: 12px;
   white-space: nowrap;
-  padding-top: 4px;
 }
 
 .bars {
   align-items: center;
   justify-content: center;
-  padding-bottom: 15px;
 }
 
 .main-container {
@@ -98,7 +79,7 @@ a {
   border-left: 4px solid transparent;
   box-shadow: 0px 1px 0px #97979744;
   align-items: center;
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
   justify-content: space-between;
 }
 
@@ -110,6 +91,7 @@ a {
 .menu-item {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .menu-container {
@@ -120,4 +102,27 @@ a {
 
 .main {
   width: 100%;
+  background-color: #F5F6F8;
+}
+
+.AppBar {
+  height: 51px;
+  Justify-content: center;
+  background-color: #fff !important;
+  box-shadow: 3px 2px 5px #48484834 !important;
+}
+
+.Bar {
+  position: relative;
+  justify-content: flex-end;
+  min-height: 0px !important;
+}
+
+.profile {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 12px;
+  color: #5A6169;
+  font-family: 'WeblySleek UI', sans-serif;
+  align-items: center;
 }

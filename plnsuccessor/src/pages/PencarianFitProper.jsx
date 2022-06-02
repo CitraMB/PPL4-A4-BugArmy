@@ -36,7 +36,7 @@ const PencarianFitProper = () => {
                 height: 10,
                 width: 500,
               }} >
-                <TextField fullWidth variant="outlined" />
+                <TextField fullWidth variant="outlined" size="small" />
               </Grid>
               <Grid item sx={1}>
                 <Button variant="outlined" startIcon={<CheckLogo  />}>Submit</Button>
@@ -44,7 +44,7 @@ const PencarianFitProper = () => {
             </Grid>
           </Box>
 
-          <Box>
+          <Box sx={{paddingTop: 5}}>
             <TableContainer>
               <Table>
                 <TableHead>
