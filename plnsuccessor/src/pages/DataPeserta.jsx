@@ -89,7 +89,7 @@ const DataPeserta = () => {
                   </div>
                 </footer>
             </div>  
-        </div>  
+      </div>  
     )
 };
 
