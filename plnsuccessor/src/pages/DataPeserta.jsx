@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from "@mui/icons-material/Search";
 import AddLogo from "../assets/icons/AddLogo";
 import axios from 'axios';
+import swal from "sweetalert";
 
 const columnTitle = ["NO","NAMA","NIP","JABATAN","GRADE","JENJANG","EDIT"];
 const dataPerson = [
@@ -68,6 +69,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const DataPeserta = () => {
     const [data, setData] = useState([]);
+
+    const deleteData = (id, nama) => {
+      swal({
+        title: "Apa Anda Yakin ?",
+        text: "Data yang sudah terhapus tidak akan bisa dikembalikan",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios.delete("http://localhost:1337/api/pegawais/" + id)
+          swal("Data " + nama + " berhasil dihapus!", {
+            icon: "success",
+          });
+          axios.get(`http://localhost:1337/api/pegawais?filters[status_pegawai][$eq]=Peserta&sort[0]=NIP`).then(res => {        
+            setData(res.data.data);
+          })
+        }
+      });
+    }
 
     useEffect(() => {
       if(data.length === 0){
@@ -141,12 +163,12 @@ const DataPeserta = () => {
                             <TableCell>{index + 1}</TableCell>
                             <TableCell>{val.attributes.NAMA}</TableCell>
                             <TableCell>{val.attributes.NIP}</TableCell>
-                            <TableCell>{val.attributes.NAMA}</TableCell>
+                            <TableCell>{val.attributes.id}</TableCell>
                             <TableCell>{val.attributes.NAMA}</TableCell>
                             <TableCell>{val.attributes.NAMA}</TableCell>
                             <TableCell>
                             {/* Button Delete Peserta */}
-                              <IconButton href={"datapeserta/delete/" + val.attributes.NIP}>
+                              <IconButton onClick={() => {deleteData(val.id, val.attributes.NAMA)}}>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5ZM5.83333 11H14.1667V9H5.83333V11Z" fill="#FF3232"/>
                                 </svg>
