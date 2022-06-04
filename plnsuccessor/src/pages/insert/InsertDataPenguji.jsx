@@ -261,7 +261,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan NO HP"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, no_hp: e.target.value}
+                      setDataPenguji({ ...dataPenguji, NO_HP: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -300,7 +300,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Agama"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, agama: e.target.value}
+                      setDataPenguji({ ...dataPenguji, AGAMA: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -323,9 +323,10 @@ const InsertDataPenguji = () => {
                 )}}
                 disabled={check}
               >
-                {jabatan.map((val, index) => {
+                {jabatan.map((val) => {
+                  console.log(val);
                   return (
-                    <MenuItem value={index}>{val.attributes.JABATAN}</MenuItem>
+                    <MenuItem key={val.id} value={val.id}>{val.attributes.JABATAN}</MenuItem>
                   )
                 })}
               </Select>
@@ -365,10 +366,10 @@ const InsertDataPenguji = () => {
                 )}}
                 disabled={check}
               >
-                {grade.map((val, index) => {
+                {grade.map((val) => {
                   console.log("grade", val);
                   return (
-                    <MenuItem value={index}>{val.attributes.GRADE}</MenuItem>
+                    <MenuItem key={val.id} value={val.id}>{val.attributes.GRADE}</MenuItem>
                   )
                 })}
               </Select>

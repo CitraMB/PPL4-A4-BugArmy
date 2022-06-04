@@ -12,7 +12,7 @@ Anggota Kelompok ini adalah:
 > 1. Masuk Kedalam direktori Project2/ BE_PLNsuccessor/
 > `` cd Project2/BE_PLNsuccessor/ `` 
 > 2. Install seluruh dependency yang dibutuhkan
-> `` npm install ``
+  >   `` npm install ``
 > 3. Pastikan isi .env seperti gambar dibawah
 > ![Foto env file](/Project2/BE_PLNsuccessor/env.png)
 > 4. Jalankan Strapi menggunakan syntax dibawah ini
