@@ -37,8 +37,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="NIP"
                             className="baseNIP"
+                            placeholder="Masukan NIP"
                         />
                         <Button className="ButtonCekFormNIP" variant="outlined">
                             <DoneCekLogo />
@@ -53,8 +53,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Nama Lengkap"
                             className="baseNamaLengkap"
+                            placeholder="Nama Lengkap"
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -68,8 +68,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Jabatan"
                             className="baseJabatan"
+                            placeholder="Jabatan"
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -89,8 +89,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="BELUM BENER"
                             className="baseJabatan"
+                            placeholder="Masukan Tanggal"
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -104,8 +104,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Proyeksi"
                             className="baseProyeksi"
+                            placeholder="Masukan Proyeksi"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -116,8 +116,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Jenjang Jabatan"
                             className="baseJenjangJabatan"
+                            placeholder="Jenjang Jabatan"
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -137,8 +137,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Urjab"
                             className="basePilihUrjab"
+                            placeholder="Masukan Uraian Jabatan"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -149,8 +149,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="BELUM BENER"
                             className="baseUploadPPT"
+                            placeholder="Masukan File PPT"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -161,8 +161,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="BELUM BENER"
                             className="baseUploadCV"
+                            placeholder="Masukan Curriculum Vitae"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -173,8 +173,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 1"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 1"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -185,8 +185,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 2"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 2"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -197,8 +197,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 3"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 3"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -209,8 +209,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 4"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 4"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -221,8 +221,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 5"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 5"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -233,8 +233,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 6"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 6"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -245,8 +245,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 7"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 7"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -257,8 +257,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 8"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 8"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -269,8 +269,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 9"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 9"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
@@ -281,8 +281,8 @@ const FormPendaftaranFitProper = () => {
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            label="Penguji 10"
                             className="basePenguji"
+                            placeholder="Masukan Penguji 10"
                         />
                     </Grid>
                     <Button className="ButtonSubmitPendaftaranFitProper" variant="outlined">
