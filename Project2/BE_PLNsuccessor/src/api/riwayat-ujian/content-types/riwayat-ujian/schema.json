@@ -14,9 +14,9 @@
   "attributes": {
     "ID_FITPROPER": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::fit-proper.fit-proper",
-      "mappedBy": "ID_RIWAYAT"
+      "inversedBy": "ID_RIWAYAT"
     },
     "ID_REPORT_NILAI": {
       "type": "relation",
