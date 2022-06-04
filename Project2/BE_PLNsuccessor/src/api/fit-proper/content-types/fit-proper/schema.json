@@ -27,11 +27,6 @@
       "required": false,
       "maxLength": 50
     },
-    "JENIS_FITPROPER": {
-      "type": "string",
-      "required": true,
-      "maxLength": 25
-    },
     "URJAB": {
       "type": "string",
       "maxLength": 225,
@@ -49,19 +44,27 @@
     },
     "TANGGAL_UJI": {
       "type": "date",
-      "required": true
-    },
-    "ID_RIWAYAT": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::riwayat-ujian.riwayat-ujian",
-      "inversedBy": "ID_FITPROPER"
+      "required": false
     },
     "ID_WAWANCARA": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::wawancara.wawancara",
       "inversedBy": "ID_FITPROPER"
+    },
+    "JENIS_FITPROPER": {
+      "type": "enumeration",
+      "enum": [
+        "Regular",
+        "Vcon"
+      ],
+      "required": true
+    },
+    "ID_RIWAYAT": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_FITPROPER"
     }
   }
 }
