@@ -11,23 +11,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import swal from 'sweetalert';
 
-const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
-
 const columns = [
     { id: 'id', label: 'NO', align: 'center' },
     {
@@ -103,14 +86,14 @@ export const TableEditFitProper = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
+                    swal("Poof! Your List has been deleted!", {
+                        icon: "success",
+                    });
                     Axios.delete(`http://localhost:1337/api/fit-propers/${id}`)
                         .then(res => {
                             getList();
                             console.log("Getting from ::::", res.data.data)
                         }).catch(err => console.log(err))
-                    swal("Poof! Your List has been deleted!", {
-                        icon: "success",
-                    });
                 } else {
                     swal("Your list is safe!");
                 }
@@ -149,11 +132,6 @@ export const TableEditFitProper = () => {
                                         <TableCell >{data.attributes.PROYEKSI}</TableCell>
                                         <TableCell >{data.attributes.TANGGAL_DAFTAR}</TableCell>
                                         <TableCell align="center" ><IconButton
-                                            aria-label="more"
-                                            id="long-button"
-                                            aria-controls={open ? 'long-menu' : undefined}
-                                            aria-expanded={open ? 'true' : undefined}
-                                            aria-haspopup="true"
                                             onClick={handleClick}
                                         >
                                             <PengujiLogo />
@@ -173,11 +151,13 @@ export const TableEditFitProper = () => {
                                                     },
                                                 }}
                                             >
-                                                {/* {data.map((option) => (
-                                                    <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                                                        {option}
-                                                    </MenuItem>
-                                                ))} */}
+                                                {data.attributes.ID_RIWAYAT.data.map((data) => {
+                                                    return (
+                                                        <MenuItem key={data.id} onClick={handleClose}>
+                                                            {data.attributes.ID_PENGUJI.data.attributes.NAMA}
+                                                        </MenuItem>
+                                                    )
+                                                })}
                                             </Menu></TableCell>
                                         <TableCell align="center" ><a href="#"><FileLogo /></a></TableCell>
                                         <TableCell className="btnDelete" align="center" ><a onClick={() => deleteList(data.id)} ><DeleteLogo /></a></TableCell>

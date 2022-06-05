@@ -7,23 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
-
 const columns = [
     { id: 'id', label: 'NO', align: 'center' },
     {
@@ -128,13 +111,13 @@ export const TableFitProper = () => {
                                                     },
                                                 }}
                                             >
-                                                {/* {row.attributes.ID_RIWAYAT.data.map((row) => {
+                                                {data.attributes.ID_RIWAYAT.data.map((data) => {
                                                     return (
-                                                        <MenuItem key={row.id} onClick={handleClose}>
-                                                            {row.attributes.ID_PENGUJI.data.attributes.NAMA}
+                                                        <MenuItem key={data.id} onClick={handleClose}>
+                                                            {data.attributes.ID_PENGUJI.data.attributes.NAMA}
                                                         </MenuItem>
                                                     )
-                                                })} */}
+                                                })}
                                             </Menu>
                                         </TableCell>
                                     </TableRow>
