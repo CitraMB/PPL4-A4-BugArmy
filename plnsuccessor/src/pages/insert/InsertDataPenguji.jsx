@@ -92,22 +92,29 @@ const InsertDataPenguji = () => {
     NO_HP: "",
     JENIS_KELAMIN: "",
     AGAMA: "",
-    JABATAN: "",
-    UNIT: "",
-    GRADE: "",
-    DIREKTORAT: "",
-    BIDANG: "",
-    SUB_bIDANG: "",
-    FOTO: ""
+    ID_JABATAN: "",
+    ID_GRADE: "",
+    ID_JENJANG: "",
+    JENJANG: ""
+    // ID_UNIT: "",
+    // ID_GRADE: "",
+    // ID_DIREKTORAT: "",
+    // ID_BIDANG: "",
+    // ID_SUB_BIDANG: "",
+    // FOTO: ""
   })
 
   useEffect(() => {
     customEndpoints("jabatans", setJabatan);
     customEndpoints("grades", setGrade);
-    if(dataPenguji.JABATAN !== ""){
-      customEndpoints("jenjangs", setJenjang);
+    customEndpoints("jenjangs?filters[ID_JABATAN][id][$eq]=" + dataPenguji.ID_JABATAN + "&filters[ID_GRADE][id][$eq]=" + dataPenguji.ID_GRADE, setJenjang);
+    console.log(dataPenguji);
+    if(jenjang.length !== 0 && dataPenguji.ID_JENJANG === ""){
+      console.log(jenjang);
+      setDataPenguji({ ...dataPenguji, ID_JENJANG: jenjang[0].id});
+      setDataPenguji({ ...dataPenguji, JENJANG: jenjang[0].attributes.JENJANG});
     }
-  },[])
+  },[dataPenguji])
 
   const getData = (val) => {
     axios.get("http://localhost:1337/api/pegawais?filters[NIP][$eq]=" + val).then((res) => {
@@ -129,7 +136,30 @@ const InsertDataPenguji = () => {
   }
 
   const saveData = () => {
-
+    const data = {
+      NIP: dataPenguji.NIP,
+      NAMA: dataPenguji.NAMA,
+      EMAIL: dataPenguji.EMAIL,
+      TEMPAT_LAHIR: dataPenguji.TEMPAT_LAHIR,
+      TANGGAL_LAHIR: dataPenguji.TANGGAL_LAHIR,
+      NO_HP: dataPenguji.NO_HP,
+      JNS_KELAMIN: dataPenguji.JENIS_KELAMIN,
+      STATUS_PEGAWAI: "Penguji",
+      AGAMA: dataPenguji.AGAMA,
+      ID_GRADE: dataPenguji.ID_GRADE,
+      ID_JABATAN: {
+        id: dataPenguji.ID_JABATAN,
+        ID_JENJANG: dataPenguji.ID_JENJANG
+      }
+    }
+    console.log("data:",data);
+    axios.post('http://localhost:1337/api/pegawais', {
+      data
+    }).then((res) => {
+      console.log(res);
+      setChecked(true);
+      swal("Berhasil", "Penguji berhasil ditambahkan.", "success");
+    }).catch((error) => console.log( error.response ) );
   }
 
   return (
@@ -188,7 +218,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Nama"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, nama: e.target.value}
+                      setDataPenguji({ ...dataPenguji, NAMA: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -206,7 +236,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Email"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, email: e.target.value}
+                      setDataPenguji({ ...dataPenguji, EMAIL: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -223,7 +253,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Tempat Lahir"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, tempat_lahir: e.target.value}
+                      setDataPenguji({ ...dataPenguji, TEMPAT_LAHIR: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -244,10 +274,6 @@ const InsertDataPenguji = () => {
                     )}}
                     disabled={check}
                   />
-                  {/* <DatePicker 
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  disabled={check} /> */}
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -293,17 +319,26 @@ const InsertDataPenguji = () => {
             <Grid item md={1.5}>
             <Typography>Agama</Typography>
             </Grid>
-            <Grid item>
-              <TextField
-                    id="agama"
-                    variant="outlined"
-                    size="small"
-                    placeholder="Masukan Agama"
-                    onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, AGAMA: e.target.value}
-                    )}}
-                    disabled={check}
-                  />
+            <Grid item  xs={2.5}>
+              <FormControl fullWidth >
+              <Select
+                displayEmpty
+                size="small"
+                value={dataPenguji.AGAMA}
+                placeholder="Pilih Agama"
+                onChange={(e) => {
+                  setDataPenguji({ ...dataPenguji, AGAMA: e.target.value}
+                )}}
+                disabled={check}
+              >
+                <MenuItem value="Buddha">Buddha</MenuItem>
+                <MenuItem value="Hindu">Hindu</MenuItem>
+                <MenuItem value="Islam">Islam</MenuItem>
+                <MenuItem value="Konghucu">Konghucu</MenuItem>
+                <MenuItem value="Kristen Katolik">Kristen Katolik</MenuItem>
+                <MenuItem value="Kristen Protestan">Kristen Protestan</MenuItem>
+              </Select>
+            </FormControl>
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -319,35 +354,18 @@ const InsertDataPenguji = () => {
                 value={dataPenguji.JABATAN}
                 placeholder="Pilih Jabatan"
                 onChange={(e) => {
-                  setDataPenguji({ ...dataPenguji, JABATAN: e.target.value}
+                  setDataPenguji({ ...dataPenguji, ID_JABATAN: e.target.value}
                 )}}
                 disabled={check}
               >
                 {jabatan.map((val) => {
-                  console.log(val);
+                  // console.log(val);
                   return (
                     <MenuItem key={val.id} value={val.id}>{val.attributes.JABATAN}</MenuItem>
                   )
                 })}
               </Select>
             </FormControl>
-            </Grid>
-          </Grid>
-          <Grid container item direction="row" spacing={1}>
-            <Grid item md={1.5}>
-            <Typography>Unit</Typography>
-            </Grid>
-            <Grid item>
-              <TextField
-                    id="Unit"
-                    variant="outlined"
-                    size="small"
-                    placeholder="Masukan Unit"
-                    onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, unit: e.target.value}
-                    )}}
-                    disabled={check}
-                  />
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -362,18 +380,51 @@ const InsertDataPenguji = () => {
                 value={dataPenguji.GRADE}
                 placeholder="Pilih Grade"
                 onChange={(e) => {
-                  setDataPenguji({ ...dataPenguji, GRADE: e.target.value}
+                  setDataPenguji({ ...dataPenguji, ID_GRADE: e.target.value}
                 )}}
                 disabled={check}
               >
                 {grade.map((val) => {
-                  console.log("grade", val);
+                  // console.log("grade", val);
                   return (
                     <MenuItem key={val.id} value={val.id}>{val.attributes.GRADE}</MenuItem>
                   )
                 })}
               </Select>
             </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container item direction="row" spacing={1}>
+            <Grid item md={1.5}>
+            <Typography>Jenjang</Typography>
+            </Grid>
+            <Grid item sm={2.5}>
+              <TextField
+                    hiddenLabel
+                    id="jenjang"
+                    placeholder=""
+                    value={dataPenguji.JENJANG}
+                    variant="outlined"
+                    size="small"
+                    disabled
+                  />
+            </Grid>
+          </Grid>
+          {/* <Grid container item direction="row" spacing={1}>
+            <Grid item md={1.5}>
+            <Typography>Unit</Typography>
+            </Grid>
+            <Grid item>
+              <TextField
+                    id="Unit"
+                    variant="outlined"
+                    size="small"
+                    placeholder="Masukan Unit"
+                    onChange={(e) => {
+                      setDataPenguji({ ...dataPenguji, ID_UNIT: e.target.value}
+                    )}}
+                    disabled={check}
+                  />
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -387,7 +438,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Direktorat"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, direktorat: e.target.value}
+                      setDataPenguji({ ...dataPenguji, ID_DIREKTORAT: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -404,7 +455,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Bidang"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, bidang: e.target.value}
+                      setDataPenguji({ ...dataPenguji, ID_BIDANG: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -421,7 +472,7 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Sub Bidang"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, sub_bidang: e.target.value}
+                      setDataPenguji({ ...dataPenguji, ID_SUB_BIDANG: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -438,16 +489,16 @@ const InsertDataPenguji = () => {
                     size="small"
                     placeholder="Masukan Foto"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, foto: e.target.value}
+                      setDataPenguji({ ...dataPenguji, FOTO: e.target.value}
                     )}}
                     disabled={check}
                   />
             </Grid>
-          </Grid>
+          </Grid> */}
           <Grid container item direction="row" spacing={1}>
             <Grid item md={1.5}></Grid>
             <Grid item xs={1.2}>
-              <Button variant="contained" size="small" startIcon={<SubmitLogo  />}>Submit</Button>
+              <Button href="/master/datapenguji" variant="contained" size="small" startIcon={<SubmitLogo  />} onClick={saveData}>Submit</Button>
             </Grid>
             <Grid item xs={1}>
               <Button href="/master/datapenguji" variant="outlined" size="small" startIcon={<KembaliLogo  />}>Kembali</Button>
@@ -459,87 +510,6 @@ const InsertDataPenguji = () => {
       <br />
       <br />
       <br />
-     
-      {/* <FormControl>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>NIP</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Button variant="outlined" startIcon={<CheckLogo  />}>Cek</Button>
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>NAMA LENGKAP</Typography>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>JABATAN</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>GRADE</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>JENJANG</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Select
-                  id="outlined-basic"
-                  labelId="label-jenjang"
-                  value={check}
-                  fullWidth
-                  size="small">
-                    <MenuItem>1</MenuItem>
-                    <MenuItem>3</MenuItem>
-                    <MenuItem>2</MenuItem>
-                  </Select>
-              </Grid>
-            </Grid>
-          </Grid>
-      </FormControl> */}
     </div>
   );
 };

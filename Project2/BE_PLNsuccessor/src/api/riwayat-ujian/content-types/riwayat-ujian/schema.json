@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "ID_FITPROPER": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::fit-proper.fit-proper",
-      "inversedBy": "ID_RIWAYAT"
-    },
     "ID_REPORT_NILAI": {
       "type": "relation",
       "relation": "oneToOne",
@@ -41,6 +35,12 @@
       "relation": "manyToOne",
       "target": "api::pegawai.pegawai",
       "inversedBy": "ID_RIWAYAT_PENGUJI"
+    },
+    "ID_FITPROPER": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::fit-proper.fit-proper",
+      "inversedBy": "ID_RIWAYAT"
     }
   }
 }

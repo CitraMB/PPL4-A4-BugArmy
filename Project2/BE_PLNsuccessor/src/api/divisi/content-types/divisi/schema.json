@@ -30,7 +30,7 @@
       "target": "api::direktorat.direktorat",
       "inversedBy": "ID_DIVISI"
     },
-    "id_pegawais": {
+    "ID_PEGAWAI": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::pegawai.pegawai",

@@ -80,8 +80,10 @@ function KembaliLogo() {
 const InsertDataPeserta = () => {
   const [check, setChecked] = useState(true);
   const [startDate, setStartDate] = useState(new Date());
-  const [jabatan, setJabatan] = useState([]); 
-  const [dataPenguji, setDataPenguji] = useState({
+  const [jabatan, setJabatan] = useState([]);
+  const [grade, setGrade] = useState([]);
+  const [jenjang, setJenjang] = useState([]); 
+  const [dataPeserta, setDataPeserta] = useState({
     NIP: "",
     NAMA: "",
     EMAIL: "",
@@ -90,19 +92,23 @@ const InsertDataPeserta = () => {
     NO_HP: "",
     JENIS_KELAMIN: "",
     AGAMA: "",
-    JABATAN: "",
-    UNIT: "",
-    GRADE: "",
-    DIREKTORAT: "",
-    BIDANG: "",
-    SUB_bIDANG: "",
-    FOTO: ""
+    ID_JABATAN: "",
+    ID_GRADE: "",
+    ID_JENJANG: "",
+    JENJANG: ""
   })
 
   useEffect(() => {
-    console.log(dataPenguji);
-    console.log(startDate);
-  },[dataPenguji])
+    customEndpoints("jabatans", setJabatan);
+    customEndpoints("grades", setGrade);
+    customEndpoints("jenjangs?filters[ID_JABATAN][id][$eq]=" + dataPeserta.ID_JABATAN + "&filters[ID_GRADE][id][$eq]=" + dataPeserta.ID_GRADE, setJenjang);
+    console.log(dataPeserta);
+    if(jenjang.length !== 0 && dataPeserta.ID_JENJANG === ""){
+      console.log(jenjang);
+      setDataPeserta({ ...dataPeserta, ID_JENJANG: jenjang[0].id});
+      setDataPeserta({ ...dataPeserta, JENJANG: jenjang[0].attributes.JENJANG});
+    }
+  },[dataPeserta])
 
   const getData = (val) => {
     axios.get("http://localhost:1337/api/pegawais?filters[NIP][$eq]=" + val).then((res) => {
@@ -117,8 +123,37 @@ const InsertDataPeserta = () => {
     })
   }
 
-  const saveData = () => {
+  const customEndpoints = (endpoints, setter) => {
+    axios.get("http://localhost:1337/api/" + endpoints).then((res) => {
+      setter(res.data.data);
+    })
+  }
 
+  const saveData = () => {
+    const data = {
+      NIP: dataPeserta.NIP,
+      NAMA: dataPeserta.NAMA,
+      EMAIL: dataPeserta.EMAIL,
+      TEMPAT_LAHIR: dataPeserta.TEMPAT_LAHIR,
+      TANGGAL_LAHIR: dataPeserta.TANGGAL_LAHIR,
+      NO_HP: dataPeserta.NO_HP,
+      JNS_KELAMIN: dataPeserta.JENIS_KELAMIN,
+      STATUS_PEGAWAI: "Peserta",
+      AGAMA: dataPeserta.AGAMA,
+      ID_GRADE: dataPeserta.ID_GRADE,
+      ID_JABATAN: {
+        id: dataPeserta.ID_JABATAN,
+        ID_JENJANG: dataPeserta.ID_JENJANG
+      }
+    }
+    console.log("data:",data);
+    axios.post('http://localhost:1337/api/pegawais', {
+      data
+    }).then((res) => {
+      console.log(res);
+      setChecked(true);
+      swal("Berhasil", "Peserta berhasil ditambahkan.", "success");
+    }).catch((error) => console.log( error.response ) );
   }
 
   return (
@@ -126,7 +161,7 @@ const InsertDataPeserta = () => {
       
 
       <Container>
-        <Button href="/master/datapenguji" variant="outlined" size="small" startIcon={<KembaliLogo  />}>Kembali</Button>
+        <Button href="/master/datapeserta" variant="outlined" size="small" startIcon={<KembaliLogo  />}>Kembali</Button>
         <br />
         <br />
         <Box sx={{ backgroundColor: 'white', paddingLeft: 2, paddingTop: 1, paddingBottom: 1, borderRadius: 3, border: '1px'}}>
@@ -155,14 +190,14 @@ const InsertDataPeserta = () => {
                     id="nip"
                     placeholder="Masukan NIP"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, NIP: e.target.value}
+                      setDataPeserta({ ...dataPeserta, NIP: e.target.value}
                     )}}
                     variant="outlined"
                     size="small"
                   />
             </Grid>
             <Grid item>
-              <Button variant="outlined" size="small" startIcon={<CheckLogo  />} onClick={() => getData(dataPenguji.nip)}>Cek</Button>
+              <Button variant="outlined" size="small" startIcon={<CheckLogo  />} onClick={() => getData(dataPeserta.nip)}>Cek</Button>
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -177,7 +212,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Nama"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, nama: e.target.value}
+                      setDataPeserta({ ...dataPeserta, NAMA: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -195,7 +230,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Email"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, email: e.target.value}
+                      setDataPeserta({ ...dataPeserta, EMAIL: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -212,7 +247,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Tempat Lahir"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, tempat_lahir: e.target.value}
+                      setDataPeserta({ ...dataPeserta, TEMPAT_LAHIR: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -229,14 +264,10 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Tanggal Lahir"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, TANGGAL_LAHIR: e.target.value}
+                      setDataPeserta({ ...dataPeserta, TANGGAL_LAHIR: e.target.value}
                     )}}
                     disabled={check}
                   />
-                  {/* <DatePicker 
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  disabled={check} /> */}
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
@@ -250,7 +281,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan NO HP"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, no_hp: e.target.value}
+                      setDataPeserta({ ...dataPeserta, NO_HP: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -265,10 +296,10 @@ const InsertDataPeserta = () => {
               <Select
                 displayEmpty
                 size="small"
-                value={dataPenguji.JENIS_KELAMIN}
+                value={dataPeserta.JENIS_KELAMIN}
                 placeholder="Pilih Jenis Kelamin"
                 onChange={(e) => {
-                  setDataPenguji({ ...dataPenguji, JENIS_KELAMIN: e.target.value}
+                  setDataPeserta({ ...dataPeserta, JENIS_KELAMIN: e.target.value}
                 )}}
                 disabled={check}
               >
@@ -282,37 +313,98 @@ const InsertDataPeserta = () => {
             <Grid item md={1.5}>
             <Typography>Agama</Typography>
             </Grid>
-            <Grid item>
-              <TextField
-                    id="agama"
-                    variant="outlined"
-                    size="small"
-                    placeholder="Masukan Agama"
-                    onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, agama: e.target.value}
-                    )}}
-                    disabled={check}
-                  />
+            <Grid item  xs={2.5}>
+              <FormControl fullWidth >
+              <Select
+                displayEmpty
+                size="small"
+                value={dataPeserta.AGAMA}
+                placeholder="Pilih Agama"
+                onChange={(e) => {
+                  setDataPeserta({ ...dataPeserta, AGAMA: e.target.value}
+                )}}
+                disabled={check}
+              >
+                <MenuItem value="Buddha">Buddha</MenuItem>
+                <MenuItem value="Hindu">Hindu</MenuItem>
+                <MenuItem value="Islam">Islam</MenuItem>
+                <MenuItem value="Konghucu">Konghucu</MenuItem>
+                <MenuItem value="Kristen Katolik">Kristen Katolik</MenuItem>
+                <MenuItem value="Kristen Protestan">Kristen Protestan</MenuItem>
+              </Select>
+            </FormControl>
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
             <Grid item md={1.5}>
             <Typography>Jabatan</Typography>
             </Grid>
-            <Grid item>
-              <TextField
-                    id="jabatan"
-                    variant="outlined"
-                    size="small"
-                    placeholder="Masukan Jabatan"
-                    onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, jabatan: e.target.value}
-                    )}}
-                    disabled={check}
-                  />
+            
+            <Grid item  xs={2.5}>
+              <FormControl fullWidth >
+              <Select
+                displayEmpty
+                size="small"
+                value={dataPeserta.JABATAN}
+                placeholder="Pilih Jabatan"
+                onChange={(e) => {
+                  setDataPeserta({ ...dataPeserta, ID_JABATAN: e.target.value}
+                )}}
+                disabled={check}
+              >
+                {jabatan.map((val) => {
+                  // console.log(val);
+                  return (
+                    <MenuItem key={val.id} value={val.id}>{val.attributes.JABATAN}</MenuItem>
+                  )
+                })}
+              </Select>
+            </FormControl>
             </Grid>
           </Grid>
           <Grid container item direction="row" spacing={1}>
+            <Grid item md={1.5}>
+            <Typography>Grade</Typography>
+            </Grid>
+            <Grid item  xs={2.5}>
+              <FormControl fullWidth >
+              <Select
+                displayEmpty
+                size="small"
+                value={dataPeserta.GRADE}
+                placeholder="Pilih Grade"
+                onChange={(e) => {
+                  setDataPeserta({ ...dataPeserta, ID_GRADE: e.target.value}
+                )}}
+                disabled={check}
+              >
+                {grade.map((val) => {
+                  // console.log("grade", val);
+                  return (
+                    <MenuItem key={val.id} value={val.id}>{val.attributes.GRADE}</MenuItem>
+                  )
+                })}
+              </Select>
+            </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container item direction="row" spacing={1}>
+            <Grid item md={1.5}>
+            <Typography>Jenjang</Typography>
+            </Grid>
+            <Grid item sm={2.5}>
+              <TextField
+                    hiddenLabel
+                    id="jenjang"
+                    placeholder=""
+                    value={dataPeserta.JENJANG}
+                    variant="outlined"
+                    size="small"
+                    disabled
+                  />
+            </Grid>
+          </Grid>
+          {/* <Grid container item direction="row" spacing={1}>
             <Grid item md={1.5}>
             <Typography>Unit</Typography>
             </Grid>
@@ -323,24 +415,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Unit"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, unit: e.target.value}
-                    )}}
-                    disabled={check}
-                  />
-            </Grid>
-          </Grid>
-          <Grid container item direction="row" spacing={1}>
-            <Grid item md={1.5}>
-            <Typography>Grade</Typography>
-            </Grid>
-            <Grid item>
-              <TextField
-                    id="grade"
-                    variant="outlined"
-                    size="small"
-                    placeholder="Masukan Grade"
-                    onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, grade: e.target.value}
+                      setDataPeserta({ ...dataPeserta, ID_UNIT: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -357,7 +432,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Direktorat"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, direktorat: e.target.value}
+                      setDataPeserta({ ...dataPeserta, ID_DIREKTORAT: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -374,7 +449,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Bidang"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, bidang: e.target.value}
+                      setDataPeserta({ ...dataPeserta, ID_BIDANG: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -391,7 +466,7 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Sub Bidang"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, sub_bidang: e.target.value}
+                      setDataPeserta({ ...dataPeserta, ID_SUB_BIDANG: e.target.value}
                     )}}
                     disabled={check}
                   />
@@ -408,19 +483,19 @@ const InsertDataPeserta = () => {
                     size="small"
                     placeholder="Masukan Foto"
                     onChange={(e) => {
-                      setDataPenguji({ ...dataPenguji, foto: e.target.value}
+                      setDataPeserta({ ...dataPeserta, FOTO: e.target.value}
                     )}}
                     disabled={check}
                   />
             </Grid>
-          </Grid>
+          </Grid> */}
           <Grid container item direction="row" spacing={1}>
             <Grid item md={1.5}></Grid>
             <Grid item xs={1.2}>
-              <Button variant="contained" size="small" startIcon={<SubmitLogo  />}>Submit</Button>
+              <Button variant="contained" size="small" startIcon={<SubmitLogo  />} onClick={saveData}>Submit</Button>
             </Grid>
             <Grid item xs={1}>
-              <Button href="/master/datapenguji" variant="outlined" size="small" startIcon={<KembaliLogo  />}>Kembali</Button>
+              <Button href="/master/datapeserta" variant="outlined" size="small" startIcon={<KembaliLogo  />}>Kembali</Button>
             </Grid>
           </Grid>
         </Grid>
@@ -429,87 +504,6 @@ const InsertDataPeserta = () => {
       <br />
       <br />
       <br />
-     
-      {/* <FormControl>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>NIP</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Button variant="outlined" startIcon={<CheckLogo  />}>Cek</Button>
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>NAMA LENGKAP</Typography>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>JABATAN</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>GRADE</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  id="outlined-basic"
-                  label=""
-                  variant="outlined"
-                  size="small"
-                  disabled={check}
-                />
-              </Grid>
-            </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={4}>
-                <Typography>JENJANG</Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Select
-                  id="outlined-basic"
-                  labelId="label-jenjang"
-                  value={check}
-                  fullWidth
-                  size="small">
-                    <MenuItem>1</MenuItem>
-                    <MenuItem>3</MenuItem>
-                    <MenuItem>2</MenuItem>
-                  </Select>
-              </Grid>
-            </Grid>
-          </Grid>
-      </FormControl> */}
     </div>
   );
 };
