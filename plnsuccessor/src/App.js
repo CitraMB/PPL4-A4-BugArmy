@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -20,6 +19,9 @@ import PendaftaranWawancara from './pages/PendaftaranWawancara';
 import PenilaianWawancara from './pages/PenilaianWawancara';
 import PenilaianFitProper from './pages/PenilaianFitProper';
 import Login from './pages/Login/Login';
+import FormPendaftaranFitProper from './pages/FormPendaftaranFitProper';
+import EditPendaftaranFitproper from './pages/EditPendaftaranFitproper';
+import EditListPendaftaranFitproper from './pages/EditListPendaftaranFitProper';
 
 function App() {
   return (
@@ -45,11 +47,13 @@ function App() {
             <Route path="/fitproper/pendaftaranwawancara" element={<PendaftaranWawancara />} />
             <Route path="/fitproper/penilaianwawancara" element={<PenilaianWawancara />} />
             <Route path="/fitproper/penilaianfitproper" element={<PenilaianFitProper />} />
+            <Route path="/fitproper/pendaftaranfitproper/formfitproper" element={<FormPendaftaranFitProper />} />
+            <Route path="/fitproper/pendaftaranfitproper/editlistfitproper/editfitproper" element={<EditPendaftaranFitproper />} />
+            <Route path="/fitproper/pendaftaranfitprope/editlistfitproper" element={<EditListPendaftaranFitproper />} />
             <Route path="*" element={<>not found</>} />
           </Routes>
         </Sidebar>
       </Router>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
     </>
   );
 }

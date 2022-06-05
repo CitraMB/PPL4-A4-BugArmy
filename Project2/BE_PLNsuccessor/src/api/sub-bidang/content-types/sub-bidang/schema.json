@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_bidangs",
+  "info": {
+    "singularName": "sub-bidang",
+    "pluralName": "sub-bidangs",
+    "displayName": "Sub_Bidang",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SUB_BIDANG": {
+      "type": "string",
+      "required": true,
+      "maxLength": 225,
+      "unique": true
+    },
+    "ID_PEGAWAI": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "ID_SUB_BIDANG"
+    },
+    "ID_BIDANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bidang.bidang",
+      "inversedBy": "ID_SUB_BIDANG"
+    }
+  }
+}

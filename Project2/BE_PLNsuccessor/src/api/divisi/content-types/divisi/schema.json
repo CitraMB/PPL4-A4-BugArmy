@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "divisis",
+  "info": {
+    "singularName": "divisi",
+    "pluralName": "divisis",
+    "displayName": "Divisi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DIVISI": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "maxLength": 225
+    },
+    "ID_BIDANG": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bidang.bidang",
+      "mappedBy": "ID_DIVISI"
+    },
+    "ID_DIREKTORAT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::direktorat.direktorat",
+      "inversedBy": "ID_DIVISI"
+    },
+    "id_pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "ID_DIVISI"
+    }
+  }
+}
