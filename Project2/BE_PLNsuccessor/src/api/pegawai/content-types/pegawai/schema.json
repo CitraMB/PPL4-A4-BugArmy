@@ -114,12 +114,6 @@
       "target": "api::direktorat.direktorat",
       "inversedBy": "ID_PEGAWAI"
     },
-    "ID_DIVISI": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::divisi.divisi",
-      "inversedBy": "id_pegawais"
-    },
     "ID_GRADE": {
       "type": "relation",
       "relation": "manyToOne",
@@ -142,6 +136,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::unit.unit",
+      "inversedBy": "ID_PEGAWAI"
+    },
+    "ID_DIVISI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::divisi.divisi",
       "inversedBy": "ID_PEGAWAI"
     }
   }

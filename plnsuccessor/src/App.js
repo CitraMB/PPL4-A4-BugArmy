@@ -9,6 +9,8 @@ import AdministrasiUsers from './pages/AdministrasiUsers';
 import PencarianFitProper from './pages/PencarianFitProper';
 import DataPeserta from './pages/DataPeserta';
 import DataPenguji from './pages/DataPenguji';
+import InsertDataPenguji from './pages/insert/InsertDataPenguji';
+import InsertDataPeserta from './pages/insert/InsertDataPeserta';
 import RekapNilaiWawancara from './pages/RekapNilaiWawancara';
 import RekapNilaiFitProper from './pages/RekapNilaiFitProper';
 import RekapManualNilaiFitProper from './pages/RekapManualNilaiFitProper';
@@ -38,6 +40,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/master/datapeserta" element={<DataPeserta />} />
             <Route path="/master/datapenguji" element={<DataPenguji />} />
+            <Route path="/master/datapeserta/insert" element={<InsertDataPeserta />} />
+            <Route path="/master/datapenguji/insert" element={<InsertDataPenguji />} />
             <Route path="/report/rekapnilaiwawancara" element={<RekapNilaiWawancara />} />
             <Route path="/report/rekapnilaifitproper" element={<RekapNilaiFitProper />} />
             <Route path="/report/rekapmanualnilaifitproper" element={<RekapManualNilaiFitProper />} />
