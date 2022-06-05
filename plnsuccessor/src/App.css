@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+<<<<<<< HEAD
+@import url('http://fonts.cdnfonts.com/css/weblysleek-ui?styles=96168,96172,96169,96173,96170,96171');
 
 * {
   margin: 0;
@@ -7,8 +8,12 @@
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
 }
+=======
+/* https://www.cdnfonts.com/weblysleek-ui.font */
+@import url('http://fonts.cdnfonts.com/css/weblysleek-ui?styles=96168,96172,96169,96173,96170,96171');
+>>>>>>> origin/taufik
 
 .sidebar {
   background: #fff;
@@ -23,16 +28,14 @@ a {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 1px 0px #97979744;
-  padding-right: 20px;
-  padding-left: 18px;
-  padding-top: 10px;
+  padding: 15px 20px;
 }
 
 .logo {
   font-size: 18px;
   line-height: 0;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 600;
   color: #3D5170;
   white-space: nowrap;
 }
@@ -53,7 +56,7 @@ a {
   border-left: 4px solid transparent;
   box-shadow: 0px 1px 0px #97979744;
   align-items: center;
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
 }
 
 .link:hover {
@@ -62,17 +65,15 @@ a {
 }
 
 .link_text {
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
   color: #3D5170;
   font-size: 12px;
   white-space: nowrap;
-  padding-top: 4px;
 }
 
 .bars {
   align-items: center;
   justify-content: center;
-  padding-bottom: 15px;
 }
 
 .main-container {
@@ -92,7 +93,7 @@ a {
   border-left: 4px solid transparent;
   box-shadow: 0px 1px 0px #97979744;
   align-items: center;
-  font-family: 'Segoe UI';
+  font-family: 'WeblySleek UI', sans-serif;
   justify-content: space-between;
 }
 
@@ -104,6 +105,7 @@ a {
 .menu-item {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .menu-container {
@@ -114,4 +116,311 @@ a {
 
 .main {
   width: 100%;
+  background-color: #F5F6F8;
 }
+
+.AppBar {
+  height: 51px;
+  Justify-content: center;
+  background-color: #fff !important;
+  box-shadow: 3px 2px 5px #48484834 !important;
+}
+
+.Bar {
+  position: relative;
+  justify-content: flex-end;
+  min-height: 0px !important;
+}
+
+.profile {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 12px;
+  color: #5A6169;
+  font-family: 'WeblySleek UI', sans-serif;
+  align-items: center;
+}
+<<<<<<< HEAD
+
+.avatar {
+  height: 35px !important;
+  width: 35px !important;
+}
+
+.TitleUtama {
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  margin-top: 30px;
+  margin-left: 25px;
+  color: #818EA3;
+}
+
+.TitleSecond {
+  color: #3D5170;
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  margin-left: 25px;
+}
+
+.BoxSearch {
+  box-shadow: 2px 5px 5px #46464644;
+  margin: 10px 25px;
+  background-color: #fff;
+  height: 100px;
+  border-radius: 8px;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.TitleBoxSearch {
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.TitleBox {
+  display: flex;
+}
+
+.Inputbase {
+  background-color: #fff;
+  height: 30px;
+  width: 350px;
+  margin-top: 10px;
+  margin-left: 4px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.ButtonCekNIP {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 10px !important;
+  height: 30px;
+  bottom: 1px;
+  text-transform: none !important;
+}
+
+.ButtonCekNIP p {
+  padding-left: 5px;
+}
+
+.Footer {
+  height: 51px;
+  background-color: #fff !important;
+  box-shadow: 3px -2px 5px #48484834 !important;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.CopyrightPLN {
+  font-size: 15px;
+  color: #818EA3;
+  font-family: 'WeblySleek UI', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.TitleUtama span {
+  font-weight: bold;
+}
+
+.ButtonPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 27px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+}
+
+.ButtonPendaftaranFitProper p {
+  margin-right: 5px;
+}
+
+.ButtonFormPendaftaranFitProper p {
+  margin-left: 5px;
+}
+
+.ButtonFormPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 27px !important;
+  margin-top: 20px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+}
+
+.tabelPendaftaranFitProper {
+  margin: 20px 30px;
+}
+
+.TitleFormFitProper {
+  display: flex;
+  background-color: white;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  box-shadow: 2px 5px 5px #48484834 !important;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.TitleFormFitProper p {
+  margin-left: 10px;
+}
+
+.BoxFormFitProper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 5px 5px #3f3f3f34 !important;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding: 20px 25px;
+
+}
+
+.form {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 10px
+}
+
+.baseNIP {
+  width: 50% !important;
+}
+
+.baseNamaLengkap,
+.baseJabatan,
+.baseProyeksi,
+.baseJenjangJabatan,
+.basePilihUrjab,
+.baseUploadPPT,
+.baseUploadCV,
+.basePenguji {
+  width: 140% !important;
+}
+
+.formTitle {
+  color: #3D5170;
+  font-size: 20px;
+  font-family: 'WeblySleek UI', sans-serif;
+}
+
+.formTitle span {
+  color: #3D5170;
+  font-size: 12px;
+  font-family: 'WeblySleek UI', sans-serif;
+}
+
+.UploadPPT span,
+.UploadCV span {
+  font-size: 10px;
+}
+
+.ButtonCekFormNIP {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  border-radius: 3px !important;
+  height: 39px !important;
+  text-transform: none !important;
+  padding: 0px 10px !important;
+  margin-left: 15px !important;
+}
+
+.ButtonCekFormNIP p {
+  margin-left: 5px;
+}
+
+.formTextField {
+  margin-left: 15rem;
+}
+
+.cellEdit {
+  padding: 0px !important;
+  padding-right: 16px !important;
+}
+
+.cellDelete {
+  padding: 0px !important;
+  padding-left: 16px !important;
+}
+
+.ButtonSubmitPendaftaranFitProper {
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  margin-left: 340px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  font-family: 'WeblySleek UI';
+  font-weight: 300;
+  background-color: #007BFF !important;
+  text-transform: none !important;
+}
+
+.ButtonSubmitPendaftaranFitProper p {
+  margin-left: 5px;
+}
+
+.ButtonEditPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 15px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+  display: show !important;
+}
+
+.DatePickerFitProper {
+  margin-right: 239px !important;
+}
+
+.ButtonEditListPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 27px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+}
+
+.ButtonEditListPendaftaranFitProper p {
+  margin-right: 5px;
+}
+
+.btnDelete {
+  padding-right: 0px !important;
+}
+
+.btnEdit {
+  padding-left: 0px !important;
+}
+=======
+>>>>>>> origin/taufik

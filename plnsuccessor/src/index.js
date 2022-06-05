@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Login from './pages/Login/Login';
+import StickyHeadTable from "./pages/Contoh/TableWithpagination.tsx";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
