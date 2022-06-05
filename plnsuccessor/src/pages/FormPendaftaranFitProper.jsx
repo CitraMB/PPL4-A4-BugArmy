@@ -13,9 +13,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useState } from 'react';
+import Axios from 'axios';
+import swal from 'sweetalert';
 
 const FormPendaftaranFitProper = () => {
+    const [data, setDatas] = useState([])
     const [value, setValue] = React.useState(null);
+    const [nip, setNip] = React.useState('');
     const [valueGrade, setValueGrade] = React.useState('');
     const [jenisFP, setJenisFP] = React.useState('');
 
@@ -30,6 +35,24 @@ const FormPendaftaranFitProper = () => {
     const handleChangeGrade = (event) => {
         setValueGrade(event.target.value);
     };
+
+    const cekNip = (e) => {
+        Axios.get('http://localhost:1337/api/fit-propers?sort=id&populate=ID_RIWAYAT.ID_PESERTA&populate=ID_RIWAYAT.ID_PENGUJI')
+            .then(res => {
+                console.log("Getting from ::::", res.data.data)
+                setDatas(res.data.data);
+            }).catch(err => console.log(err))
+
+        {
+            data.map((data) => {
+                return (
+                    function getFee(e) {
+                        return ((e === data.attributes.ID_PESERTA.data.attributes.NIP) ? setDatas(e) : swal("Here's the title!", "...and here's the text!"));
+                    }
+                )
+            })
+        }
+    }
 
     return (
         <div className="FormPendaftaranFitProper">
@@ -48,17 +71,21 @@ const FormPendaftaranFitProper = () => {
                         <p className="formTitle">NIP</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            size="small"
-                            className="baseNIP"
-                            placeholder="Masukan NIP"
-                        />
-                        <Button className="ButtonCekFormNIP" variant="outlined">
-                            <DoneCekLogo />
-                            <p>Cek</p>
-                        </Button>
+                        <form>
+                            <TextField
+                                id="outlined-basic"
+                                variant="outlined"
+                                size="small"
+                                className="baseNIP"
+                                placeholder="Masukan NIP"
+                                value={nip}
+                                onChange={(e) => setNip(e.target.value)}
+                            />
+                            <Button className="ButtonCekFormNIP" variant="outlined" onClick={cekNip}>
+                                <DoneCekLogo />
+                                <p>Cek</p>
+                            </Button>
+                        </form>
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Nama Lengkap</p>
