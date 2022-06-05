@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "report_nilais",
+  "info": {
+    "singularName": "report-nilai",
+    "pluralName": "report-nilais",
+    "displayName": "Report_Nilai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ENTHUSIASTHIC": {
+      "type": "integer",
+      "max": 100
+    },
+    "CREATIVE_INNOVATIVE": {
+      "type": "integer",
+      "max": 100,
+      "required": false
+    },
+    "BUILDING_BUSINESS": {
+      "type": "integer",
+      "max": 100
+    },
+    "STRATEGIC_ORIENTATION": {
+      "type": "integer",
+      "max": 100
+    },
+    "CUSTOMER_FOCUS": {
+      "type": "integer",
+      "max": 100
+    },
+    "DRIVING_EXECUTION": {
+      "type": "integer",
+      "max": 100
+    },
+    "VISIONARY_LEADERSHIP": {
+      "type": "integer",
+      "max": 100
+    },
+    "EMPOWERING": {
+      "type": "integer",
+      "max": 100
+    },
+    "KEANDALAN_SISTEM": {
+      "type": "integer",
+      "max": 100
+    },
+    "KECEPATAN_RECOVERY": {
+      "type": "integer",
+      "max": 100
+    },
+    "MANAJEMEN_ASET": {
+      "type": "integer",
+      "max": 100
+    },
+    "STRATEGI_BREAKTHROUGH": {
+      "type": "integer",
+      "max": 100
+    },
+    "INTERNAL_READINESS": {
+      "type": "integer",
+      "max": 100
+    },
+    "EXTERNAL_READINESS": {
+      "type": "integer",
+      "max": 100
+    },
+    "CULTURAL_POLITICS": {
+      "type": "integer",
+      "max": 100
+    },
+    "TOTAL": {
+      "type": "float",
+      "max": 100
+    },
+    "KEKUATAN": {
+      "type": "string",
+      "maxLength": 225
+    },
+    "KELEMAHAN": {
+      "type": "string",
+      "maxLength": 225
+    },
+    "ID_RIWAYAT": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_REPORT_NILAI"
+    }
+  }
+}

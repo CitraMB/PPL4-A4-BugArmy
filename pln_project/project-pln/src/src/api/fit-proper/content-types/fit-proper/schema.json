@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fit_propers",
+  "info": {
+    "singularName": "fit-proper",
+    "pluralName": "fit-propers",
+    "displayName": "Fit_Proper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TANGGAL_DAFTAR": {
+      "required": true,
+      "type": "date"
+    },
+    "PROYEKSI": {
+      "type": "string",
+      "required": true,
+      "maxLength": 225,
+      "unique": false
+    },
+    "JENJANG_JABATAN": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "URJAB": {
+      "type": "string",
+      "maxLength": 225,
+      "required": false
+    },
+    "PPT_FITPROPER": {
+      "type": "string",
+      "required": true,
+      "maxLength": 225
+    },
+    "CV_FITPROPER": {
+      "type": "string",
+      "maxLength": 225,
+      "required": true
+    },
+    "TANGGAL_UJI": {
+      "type": "date",
+      "required": false
+    },
+    "ID_WAWANCARA": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wawancara.wawancara",
+      "inversedBy": "ID_FITPROPER"
+    },
+    "JENIS_FITPROPER": {
+      "type": "enumeration",
+      "enum": [
+        "Regular",
+        "Vcon"
+      ],
+      "required": true
+    },
+    "ID_RIWAYAT": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_FITPROPER"
+    }
+  }
+}
