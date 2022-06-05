@@ -1,5 +1,4 @@
 import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -13,12 +12,10 @@ export default function SelectedFormGrade({ gradeValue }) {
 
     return (
         <FormControl sx={{ minWidth: 280 }} size="small">
-            <InputLabel id="demo-select-small">Grade</InputLabel>
             <Select
                 labelId="demo-select-small"
                 id="demo-select-small"
                 value={grade}
-                label="Grade"
                 onChange={handleChange}
             >
                 <MenuItem value="">
@@ -34,22 +31,22 @@ export default function SelectedFormGrade({ gradeValue }) {
                 <MenuItem value={"BAS4B"}>BAS4B</MenuItem>
                 <MenuItem value={"BAS4C"}>BAS4C</MenuItem>
                 <MenuItem value={"BAS4D"}>BAS4D</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
-                <MenuItem value={""}>Thirty</MenuItem>
-                <MenuItem value={""}>Ten</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
-                <MenuItem value={""}>Thirty</MenuItem>
-                <MenuItem value={""}>Ten</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
-                <MenuItem value={""}>Thirty</MenuItem>
-                <MenuItem value={""}>Ten</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
-                <MenuItem value={""}>Thirty</MenuItem>
-                <MenuItem value={""}>Ten</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
-                <MenuItem value={""}>Thirty</MenuItem>
-                <MenuItem value={""}>Ten</MenuItem>
-                <MenuItem value={""}>Twenty</MenuItem>
+                <MenuItem value={"BAS4E"}>BAS4E</MenuItem>
+                <MenuItem value={"INT01"}>INT01</MenuItem>
+                <MenuItem value={"INT02"}>INT02</MenuItem>
+                <MenuItem value={"INT03"}>INT03</MenuItem>
+                <MenuItem value={"OPT01"}>OPT01</MenuItem>
+                <MenuItem value={"OPT02"}>OPT02</MenuItem>
+                <MenuItem value={"OPT03"}>opt03</MenuItem>
+                <MenuItem value={"OPT04"}>OPT04</MenuItem>
+                <MenuItem value={"SPE01"}>SPE01</MenuItem>
+                <MenuItem value={"SPE02"}>SPE02</MenuItem>
+                <MenuItem value={"SPE03"}>SPE03</MenuItem>
+                <MenuItem value={"SPE04"}>SPE04</MenuItem>
+                <MenuItem value={"SYS01"}>SYS01</MenuItem>
+                <MenuItem value={"SYS02"}>SYS02</MenuItem>
+                <MenuItem value={"SYS03"}>SYS03</MenuItem>
+                <MenuItem value={"SYS04"}>SYS04</MenuItem>
             </Select>
         </FormControl>
     );

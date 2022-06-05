@@ -388,3 +388,31 @@ a {
   text-transform: none !important;
   display: show !important;
 }
+
+.DatePickerFitProper {
+  margin-right: 239px !important;
+}
+
+.ButtonEditListPendaftaranFitProper {
+  border: 1px solid #007BFF !important;
+  color: #007BFF !important;
+  margin-left: 27px !important;
+  margin-top: 10px !important;
+  border-radius: 3px !important;
+  padding: 0 8px !important;
+  height: 30px;
+  background-color: white !important;
+  text-transform: none !important;
+}
+
+.ButtonEditListPendaftaranFitProper p {
+  margin-right: 5px;
+}
+
+.btnDelete {
+  padding-right: 0px !important;
+}
+
+.btnEdit {
+  padding-left: 0px !important;
+}

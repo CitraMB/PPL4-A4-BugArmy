@@ -1,20 +1,35 @@
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
 import HeaderTanpaPencarian from "../components/Header/HeaderTanpaPencarian";
 import Footer from "../components/Footer/Footer";
 import { Button, Grid, TextField } from "@mui/material";
 import KembaliLogo from "../assets/icons/KembaliLogo"
 import GearLogo from "../assets/icons/GearLogo";
 import DoneCekLogo from "../assets/icons/DoneCekLogo";
-import SelectedFormGrade from "../components/Form/SelectedFormGrade"
-import SelectedFormJenisFitProper from "../components/Form/SelectedFormJenisFitProper"
 import SubmitLogo from "../assets/icons/SubmitLogo";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const FormPendaftaranFitProper = () => {
+    const [value, setValue] = React.useState(null);
+    const [valueGrade, setValueGrade] = React.useState('');
+    const [jenisFP, setJenisFP] = React.useState('');
 
-    const gradeValue = () => {
-    }
+    const handleChange = (newValue) => {
+        setValue(newValue);
+    };
 
-    const JenisFitProperValue = () => {
-    }
+    const handleChangeJenisFP = (event) => {
+        setJenisFP(event.target.value);
+    };
+
+    const handleChangeGrade = (event) => {
+        setValueGrade(event.target.value);
+    };
 
     return (
         <div className="FormPendaftaranFitProper">
@@ -79,22 +94,59 @@ const FormPendaftaranFitProper = () => {
                         <p className="formTitle">Grade</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <SelectedFormGrade gradeValue={gradeValue} />
+                        <FormControl sx={{ minWidth: 280 }} size="small">
+                            <Select
+                                labelId="demo-select-small"
+                                id="demo-select-small"
+                                value={valueGrade}
+                                onChange={handleChangeGrade}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={"ADV01"}>ADV01</MenuItem>
+                                <MenuItem value={"ADV02"}>ADV02</MenuItem>
+                                <MenuItem value={"ADV03"}>ADV03</MenuItem>
+                                <MenuItem value={"BAS01"}>BAS01</MenuItem>
+                                <MenuItem value={"BAS02"}>BAS02</MenuItem>
+                                <MenuItem value={"BAS03"}>BAS03</MenuItem>
+                                <MenuItem value={"BAS4A"}>BAS4A</MenuItem>
+                                <MenuItem value={"BAS4B"}>BAS4B</MenuItem>
+                                <MenuItem value={"BAS4C"}>BAS4C</MenuItem>
+                                <MenuItem value={"BAS4D"}>BAS4D</MenuItem>
+                                <MenuItem value={"BAS4E"}>BAS4E</MenuItem>
+                                <MenuItem value={"INT01"}>INT01</MenuItem>
+                                <MenuItem value={"INT02"}>INT02</MenuItem>
+                                <MenuItem value={"INT03"}>INT03</MenuItem>
+                                <MenuItem value={"OPT01"}>OPT01</MenuItem>
+                                <MenuItem value={"OPT02"}>OPT02</MenuItem>
+                                <MenuItem value={"OPT03"}>opt03</MenuItem>
+                                <MenuItem value={"OPT04"}>OPT04</MenuItem>
+                                <MenuItem value={"SPE01"}>SPE01</MenuItem>
+                                <MenuItem value={"SPE02"}>SPE02</MenuItem>
+                                <MenuItem value={"SPE03"}>SPE03</MenuItem>
+                                <MenuItem value={"SPE04"}>SPE04</MenuItem>
+                                <MenuItem value={"SYS01"}>SYS01</MenuItem>
+                                <MenuItem value={"SYS02"}>SYS02</MenuItem>
+                                <MenuItem value={"SYS03"}>SYS03</MenuItem>
+                                <MenuItem value={"SYS04"}>SYS04</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Date</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            size="small"
-                            className="baseJabatan"
-                            placeholder="Masukan Tanggal"
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <Stack className="DatePickerFitProper">
+                                <MobileDatePicker
+                                    inputFormat="MM/dd/yyyy"
+                                    value={value}
+                                    onChange={handleChange}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </Stack>
+                        </LocalizationProvider>
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Proyeksi</p>
@@ -127,7 +179,20 @@ const FormPendaftaranFitProper = () => {
                         <p className="formTitle">Jenis Fit & Proper</p>
                     </Grid>
                     <Grid item xs={6}>
-                        <SelectedFormJenisFitProper JenisFitProperValue={JenisFitProperValue} />
+                        <FormControl sx={{ minWidth: 280 }} size="small">
+                            <Select
+                                labelId="demo-select-small"
+                                id="demo-select-small"
+                                value={jenisFP}
+                                onChange={handleChangeJenisFP}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={"Regular"}>Regular</MenuItem>
+                                <MenuItem value={"Vcon"}>Vcon</MenuItem>
+                            </Select>
+                        </FormControl >
                     </Grid>
                     <Grid item xs={3.5} className="form">
                         <p className="formTitle">Pilih Urjab</p>
@@ -150,11 +215,11 @@ const FormPendaftaranFitProper = () => {
                             variant="outlined"
                             size="small"
                             className="baseUploadPPT"
-                            placeholder="Masukan File PPT"
+                            type="file"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">
-                        <p className="formTitle">Upload CV<span> *.doc/.docx</span></p>
+                        <p className="formTitle">Upload CV<span> *.pdf</span></p>
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
@@ -162,7 +227,7 @@ const FormPendaftaranFitProper = () => {
                             variant="outlined"
                             size="small"
                             className="baseUploadCV"
-                            placeholder="Masukan Curriculum Vitae"
+                            type="file"
                         />
                     </Grid>
                     <Grid item xs={3.5} className="form">

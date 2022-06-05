@@ -1,11 +1,15 @@
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, TablePagination } from "@mui/material";
 import PengujiLogo from "../../assets/icons/PengujiLogo";
+import FileLogo from "../../assets/icons/FileLogo";
+import GearLogo from "../../assets/icons/GearLogo";
+import DeleteLogo from "../../assets/icons/DeleteLogo";
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import swal from 'sweetalert';
 
 const options = [
     'None',
@@ -50,12 +54,13 @@ const columns = [
 
 const ITEM_HEIGHT = 48;
 
-export const TableFitProper = () => {
+export const TableEditFitProper = () => {
 
     const [data, setDatas] = useState([])
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [anchorEl, setAnchorEl] = React.useState(null);
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -74,15 +79,43 @@ export const TableFitProper = () => {
     };
 
     useEffect(() => {
+        getList();
+    }, [])
+
+    const getList = () => {
         // Edit Endpoint Get List Pendaftaran Fit & Proper
         // http://localhost:1337/api/fit-propers
         // http://localhost:1337/api/fit-propers?sort=id&populate=ID_RIWAYAT.ID_PESERTA
-        Axios.get('http://localhost:1337/api/fit-propers?sort=id&populate=ID_RIWAYAT.ID_PESERTA&populate=ID_RIWAYAT.ID_PENGUJI')
+        Axios.get(`http://localhost:1337/api/fit-propers?sort=id&populate=ID_RIWAYAT.ID_PESERTA&populate=ID_RIWAYAT.ID_PENGUJI`)
             .then(res => {
                 console.log("Getting from ::::", res.data.data)
                 setDatas(res.data.data);
             }).catch(err => console.log(err))
-    }, [])
+    }
+
+    const deleteList = (id) => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this list!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    Axios.delete(`http://localhost:1337/api/fit-propers/${id}`)
+                        .then(res => {
+                            getList();
+                            console.log("Getting from ::::", res.data.data)
+                        }).catch(err => console.log(err))
+                    swal("Poof! Your List has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your list is safe!");
+                }
+            });
+    };
 
     return (
         <Paper>
@@ -93,12 +126,14 @@ export const TableFitProper = () => {
                             {columns.map((column) => (
                                 <TableCell
                                     key={column.id}
-                                    align={column.align}
+                                    align={column.align} ta
                                 >
                                     {column.label}
                                 </TableCell>
                             ))}
                             <TableCell align="center">PENGUJI</TableCell>
+                            <TableCell align="center">FILE</TableCell>
+                            <TableCell colSpan={2} align="center">EDIT</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -113,11 +148,21 @@ export const TableFitProper = () => {
                                         <TableCell >{data.attributes.JENJANG_JABATAN}</TableCell>
                                         <TableCell >{data.attributes.PROYEKSI}</TableCell>
                                         <TableCell >{data.attributes.TANGGAL_DAFTAR}</TableCell>
-                                        <TableCell align="center" >
-                                            <IconButton onClick={handleClick}>
-                                                <PengujiLogo />
-                                            </IconButton>
+                                        <TableCell align="center" ><IconButton
+                                            aria-label="more"
+                                            id="long-button"
+                                            aria-controls={open ? 'long-menu' : undefined}
+                                            aria-expanded={open ? 'true' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleClick}
+                                        >
+                                            <PengujiLogo />
+                                        </IconButton>
                                             <Menu
+                                                id="long-menu"
+                                                MenuListProps={{
+                                                    'aria-labelledby': 'long-button',
+                                                }}
                                                 anchorEl={anchorEl}
                                                 open={open}
                                                 onClose={handleClose}
@@ -128,15 +173,15 @@ export const TableFitProper = () => {
                                                     },
                                                 }}
                                             >
-                                                {/* {row.attributes.ID_RIWAYAT.data.map((row) => {
-                                                    return (
-                                                        <MenuItem key={row.id} onClick={handleClose}>
-                                                            {row.attributes.ID_PENGUJI.data.attributes.NAMA}
-                                                        </MenuItem>
-                                                    )
-                                                })} */}
-                                            </Menu>
-                                        </TableCell>
+                                                {/* {data.map((option) => (
+                                                    <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                                                        {option}
+                                                    </MenuItem>
+                                                ))} */}
+                                            </Menu></TableCell>
+                                        <TableCell align="center" ><a href="#"><FileLogo /></a></TableCell>
+                                        <TableCell className="btnDelete" align="center" ><a onClick={() => deleteList(data.id)} ><DeleteLogo /></a></TableCell>
+                                        <TableCell className="btnEdit" align="center" ><a href="#"><GearLogo /></a></TableCell>
                                     </TableRow>
                                 );
                             })}
@@ -156,4 +201,4 @@ export const TableFitProper = () => {
     )
 }
 
-export default TableFitProper;
+export default TableEditFitProper;
