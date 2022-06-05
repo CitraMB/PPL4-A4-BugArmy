@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fit_and_propers",
+  "info": {
+    "singularName": "fit-and-proper",
+    "pluralName": "fit-and-propers",
+    "displayName": "Pendaftaran_Fit&Proper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TANGGAL_FITPROPER": {
+      "type": "date",
+      "required": true
+    },
+    "PROYEKSI": {
+      "type": "string",
+      "required": true,
+      "maxLength": 225
+    },
+    "JENJANG_JABATAN": {
+      "type": "string"
+    },
+    "JENIS_FITPROPER": {
+      "type": "string",
+      "required": true
+    },
+    "URJAB": {
+      "type": "string"
+    },
+    "PPT_FITPROPER": {
+      "type": "string",
+      "required": true
+    },
+    "CV_FITPROPER": {
+      "type": "string",
+      "required": true
+    },
+    "riwayat_ujians": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_FITPROPER"
+    },
+    "ID_PEGAWAI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "pendaftaran_fit_and_propers"
+    }
+  }
+}

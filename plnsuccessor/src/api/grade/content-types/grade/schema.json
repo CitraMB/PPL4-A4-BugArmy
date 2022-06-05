@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "grades",
+  "info": {
+    "singularName": "grade",
+    "pluralName": "grades",
+    "displayName": "Grade",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "GRADE": {
+      "type": "string",
+      "required": true,
+      "maxLength": 5
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "ID_GRADE"
+    },
+    "KI_INTI": {
+      "type": "integer"
+    },
+    "KI_PERAN": {
+      "type": "integer"
+    },
+    "KI_BIDANG": {
+      "type": "integer"
+    }
+  }
+}

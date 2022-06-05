@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wawancaras",
+  "info": {
+    "singularName": "wawancara",
+    "pluralName": "wawancaras",
+    "displayName": "Wawancara",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TANGGAL_WAWANCARA": {
+      "type": "date",
+      "required": true
+    },
+    "riwayat_ujians": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_WAWANCARA"
+    },
+    "ID_PEGAWAI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "wawancaras"
+    }
+  }
+}

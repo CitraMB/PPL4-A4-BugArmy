@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "riwayat_ujians",
+  "info": {
+    "singularName": "riwayat-ujian",
+    "pluralName": "riwayat-ujians",
+    "displayName": "Riwayat_ujian",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NILAI_FITPROPER": {
+      "type": "integer"
+    },
+    "NILAI_WAWANCARA": {
+      "type": "integer"
+    },
+    "ID_FITPROPER": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::fit-and-proper.fit-and-proper",
+      "inversedBy": "riwayat_ujians"
+    },
+    "ID_WAWANCARA": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wawancara.wawancara",
+      "inversedBy": "riwayat_ujians"
+    },
+    "ID_PEGAWAI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "riwayat_ujians"
+    },
+    "ID_PENGUJI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pegawai.pegawai",
+      "inversedBy": "riwayat_ujians"
+    }
+  }
+}

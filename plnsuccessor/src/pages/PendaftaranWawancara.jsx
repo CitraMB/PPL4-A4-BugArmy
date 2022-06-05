@@ -1,4 +1,6 @@
+import { Button } from "@mui/material";
 import React from "react";
+import PendaftaranLogo from "../assets/icons/PendaftaranLogo";
 const PendaftaranWawancara = () => {
     return (
     <div id="pagePendaftaranWawancara" className='container p-4'>
@@ -14,11 +16,10 @@ const PendaftaranWawancara = () => {
                 <p className='h3'>Welcome to Wawancara</p>
         </div>
         <div>
-            <button style={{border:2,color:"blue"}} class="btn"> 
-                <div style={{color:"blue"}}>Pendaftaran
-                    <img style={{width:20, height:20}} src="../assets/icons/User_fill_add.png"/>
-                </div> 
-            </button>
+            <Button href="/fitproper/pendaftaranWawancara/formPendaftaranWawancara" className="ButtonPendaftaranWawancara" variant="outlined">
+                <p>pendaftaran</p>
+                <PendaftaranLogo/>
+            </Button>
         </div>
         <div className='pt-2'>
                 <table className='table'>

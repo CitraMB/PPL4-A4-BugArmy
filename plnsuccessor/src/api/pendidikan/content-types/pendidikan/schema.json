@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pendidikans",
+  "info": {
+    "singularName": "pendidikan",
+    "pluralName": "pendidikans",
+    "displayName": "Pendidikan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "PENDIDIKAN": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "pegawais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pegawai.pegawai",
+      "mappedBy": "ID_PENDIDIKAN"
+    }
+  }
+}

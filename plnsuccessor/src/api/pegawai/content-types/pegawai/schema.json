@@ -1,0 +1,137 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pegawais",
+  "info": {
+    "singularName": "pegawai",
+    "pluralName": "pegawais",
+    "displayName": "Pegawai",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NAMA": {
+      "type": "string",
+      "maxLength": 50,
+      "required": true
+    },
+    "TEMPAT_LAHIR": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "TANGGAL_LAHIR": {
+      "type": "date",
+      "required": true
+    },
+    "NIP": {
+      "type": "uid",
+      "maxLength": 9,
+      "required": true
+    },
+    "EMAIL": {
+      "type": "email",
+      "maxLength": 50
+    },
+    "NO_HP": {
+      "type": "string",
+      "maxLength": 13
+    },
+    "JNS_KELAMIN": {
+      "type": "enumeration",
+      "enum": [
+        "WANITA",
+        "PRIA"
+      ],
+      "required": true
+    },
+    "AGAMA": {
+      "type": "enumeration",
+      "enum": [
+        "ISLAM",
+        "PROTESTAN",
+        "KATOLIK",
+        "HINDU",
+        "BUDDHA",
+        "KHONGHUCU"
+      ],
+      "required": true
+    },
+    "ID_UNIT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "pegawais"
+    },
+    "ID_GRADE": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grade.grade",
+      "inversedBy": "pegawais"
+    },
+    "ID_PENDIDIKAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pendidikan.pendidikan",
+      "inversedBy": "pegawais"
+    },
+    "riwayat_ujians": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::riwayat-ujian.riwayat-ujian",
+      "mappedBy": "ID_PENGUJI"
+    },
+    "pendaftaran_fit_and_propers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fit-and-proper.fit-and-proper",
+      "mappedBy": "ID_PEGAWAI"
+    },
+    "wawancaras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wawancara.wawancara",
+      "mappedBy": "ID_PEGAWAI"
+    },
+    "ID_SUB_BIDANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-bidang.sub-bidang",
+      "inversedBy": "pegawais"
+    },
+    "ID_JABATAN": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jabatan.jabatan",
+      "inversedBy": "pegawais"
+    },
+    "ID_DIVISI": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::divisi.divisi",
+      "inversedBy": "pegawais"
+    },
+    "ID_DIREKTORAT": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::direktorat.direktorat",
+      "inversedBy": "pegawais"
+    },
+    "ID_BIDANG": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bidang.bidang",
+      "inversedBy": "pegawais"
+    },
+    "STATUS_PEGAWAI": {
+      "type": "string"
+    },
+    "STATUS_UJIAN": {
+      "type": "string"
+    },
+    "FOTO": {
+      "type": "string"
+    }
+  }
+}
