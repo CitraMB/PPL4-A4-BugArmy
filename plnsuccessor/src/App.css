@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import url('http://fonts.cdnfonts.com/css/weblysleek-ui?styles=96168,96172,96169,96173,96170,96171');
 
 * {
@@ -10,10 +9,6 @@
 a {
   text-decoration: none;
 }
-=======
-/* https://www.cdnfonts.com/weblysleek-ui.font */
-@import url('http://fonts.cdnfonts.com/css/weblysleek-ui?styles=96168,96172,96169,96173,96170,96171');
->>>>>>> origin/taufik
 
 .sidebar {
   background: #fff;
@@ -140,7 +135,6 @@ a {
   font-family: 'WeblySleek UI', sans-serif;
   align-items: center;
 }
-<<<<<<< HEAD
 
 .avatar {
   height: 35px !important;
@@ -422,5 +416,3 @@ a {
 .btnEdit {
   padding-left: 0px !important;
 }
-=======
->>>>>>> origin/taufik
